@@ -14,31 +14,18 @@
   <fieldset>
 
     <p>
-      <label for="nama">Nama: </label>
-      <input type="text" name="nama" placeholder="nama lengkap"/>
+      <label for="username">Email : </label>
+      <input type="text" name="username" placeholder="email@mail.com"/>
     </p>
+
     <p>
-      <label for="alamat">Alamat: </label>
-      <textarea name="alamat"></textarea>
+      <label for="password">Password: </label>
+      <input type="password" name="password"/>
     </p>
+
     <p>
-      <label for="jenis_kelamin">Jenis Kelamin: </label>
-      <label><input type="radio" name="jenis_kelamin" value="laki-laki"> Laki-laki</label>
-      <label><input type="radio" name="jenis_kelamin" value="perempuan"> Perempuan</label>
-    </p>
-    <p>
-      <label for="agama">Agama: </label>
-      <select name="agama">
-        <option>Islam</option>
-        <option>Kristen</option>
-        <option>Hindu</option>
-        <option>Budha</option>
-        <option>Atheis</option>
-      </select>
-    </p>
-    <p>
-      <label for="sekolah_asal">Sekolah Asal: </label>
-      <input type="text" name="sekolah_asal" placeholder="nama sekolah"/>
+      <label for="confirm_password">Confirm Password: </label>
+      <input type="password" name="confirm_password"/>
     </p>
     <p>
       <input type="submit" value="Daftar" name="daftar"/>
