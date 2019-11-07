@@ -3,7 +3,7 @@
 $server = "localhost";
 $user = "yudisial";
 $password = "yudisial";
-$nama_database = "pendaftaran_siswa";
+$nama_database = "komisi_yudisial";
 
 $db = mysqli_connect($server, $user, $password, $nama_database);
 
