@@ -13,8 +13,6 @@
 <h4>Menu</h4>
 <nav>
   <ul>
-    <li><a href="form-daftar.php">Daftar Baru</a></li>
-    <li><a href="list-siswa.php">Pendaftar</a></li>
     <li><a href="form-daftar.php">Daftar Akun Baru</a></li>
     <li><a href="list-siswa.php">Login</a></li>
   </ul>
