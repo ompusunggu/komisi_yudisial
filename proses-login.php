@@ -3,7 +3,7 @@
 include("config.php");
 
 // cek apakah tombol daftar sudah diklik atau blum?
-if (isset($_POST['daftar'])) {
+if (isset($_POST['login'])) {
 
     // ambil data dari formulir
     $username = $_POST['username'];
