@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include("config.php");
 
@@ -14,6 +15,7 @@ if (isset($_POST['login'])) {
     // buat query
     $sql = "SELECT * from user where username = '$username' and password =  '$hashedPassword'";
     $query = mysqli_query($db, $sql);
+    $_SESSION[username] = $hashedPassword;
 
     // apakah query simpan berhasil?
     if ($query) {
