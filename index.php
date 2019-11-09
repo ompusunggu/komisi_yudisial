@@ -18,6 +18,7 @@ session_start();
   <ul>
     <li><a href="form-daftar.php">Daftar Akun Baru</a></li>
     <li><a href="form-login.php">Login</a></li>
+    <li><a href="list-hakim.php">Login</a></li>
   </ul>
 </nav>
 <?php if (isset($_GET['status'])): ?>

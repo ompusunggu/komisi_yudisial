@@ -13,7 +13,7 @@ if( isset($_GET['id']) ){
 
     // apakah query hapus berhasil?
     if( $query ){
-        header('Location: list-siswa.php');
+        header('Location: list-hakim.php');
     } else {
         die("gagal menghapus...");
     }

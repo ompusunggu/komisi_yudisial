@@ -32,18 +32,18 @@
     <tbody>
 
         <?php
-        $sql = "SELECT * FROM calon_siswa";
+        $sql = "SELECT * FROM hakim";
         $query = mysqli_query($db, $sql);
 
-        while($siswa = mysqli_fetch_array($query)){
+        while($hakim = mysqli_fetch_array($query)){
             echo "<tr>";
 
-            echo "<td>".$siswa['id']."</td>";
-            echo "<td>".$siswa['nama']."</td>";
-            echo "<td>".$siswa['alamat']."</td>";
-            echo "<td>".$siswa['jenis_kelamin']."</td>";
-            echo "<td>".$siswa['agama']."</td>";
-            echo "<td>".$siswa['sekolah_asal']."</td>";
+            echo "<td>".$hakim['id']."</td>";
+            echo "<td>".$hakim['nama']."</td>";
+            echo "<td>".$hakim['alamat']."</td>";
+            echo "<td>".$hakim['jenis_kelamin']."</td>";
+            echo "<td>".$hakim['agama']."</td>";
+            echo "<td>".$hakim['sekolah_asal']."</td>";
 
             echo "<td>";
             echo "<a href='form-edit.php?id=".$siswa['id']."'>Edit</a> | ";
