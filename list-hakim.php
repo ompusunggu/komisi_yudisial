@@ -22,10 +22,10 @@
         <tr>
             <th>No</th>
             <th>Nama</th>
-            <th>Alamat</th>
-            <th>Jenis Kelamin</th>
+            <th>nip</th>
+            <th>npwp</th>
             <th>Agama</th>
-            <th>Sekolah Asal</th>
+            <th>gelar hakim</th>
             <th>Tindakan</th>
         </tr>
     </thead>
@@ -38,12 +38,12 @@
         while($hakim = mysqli_fetch_array($query)){
             echo "<tr>";
 
-            echo "<td>".$hakim['id']."</td>";
-            echo "<td>".$hakim['nama']."</td>";
-            echo "<td>".$hakim['alamat']."</td>";
-            echo "<td>".$hakim['jenis_kelamin']."</td>";
-            echo "<td>".$hakim['agama']."</td>";
-            echo "<td>".$hakim['sekolah_asal']."</td>";
+            echo "<td>".$hakim['idHakim']."</td>";
+            echo "<td>".$hakim['namaHakim']."</td>";
+            echo "<td>".$hakim['nip']."</td>";
+            echo "<td>".$hakim['npwp']."</td>";
+            echo "<td>".$hakim['idAgama']."</td>";
+            echo "<td>".$hakim['gelarHakim']."</td>";
 
             echo "<td>";
             echo "<a href='form-edit.php?id=".$siswa['id']."'>Edit</a> | ";
