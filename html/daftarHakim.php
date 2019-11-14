@@ -1,3 +1,4 @@
+<?php include("config.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -186,6 +187,26 @@
                       <td>Pengadilan Bogor - 2A</td>
                       <td><a href="#" class="btn btn-primary">View Profile</a></td>
                     </tr>
+                    <?php
+                    $sql = "SELECT * FROM hakim";
+                    $query = mysqli_query($db, $sql);
+
+                    while($hakim = mysqli_fetch_array($query)){
+                        echo "<tr>";
+
+                        echo "<td>".$hakim['idHakim']."</td>";
+                        echo "<td>".$hakim['namaHakim']."</td>";
+                        echo "<td>".$hakim['nip']."</td>";
+                        echo "<td>".$hakim['npwp']."</td>";
+
+                        echo "<td>";
+                        echo "<a href='detail-hakim.php?id=".$hakim['idHakim']."'>Edit</a> | ";
+                        echo "</td>";
+
+                        echo "</tr>";
+                    }
+                    ?>
+
                   </tbody>
                 </table>
               </div>
