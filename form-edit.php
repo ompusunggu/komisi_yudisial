@@ -3,7 +3,7 @@
 include("config.php");
 
 // kalau tidak ada id di query string
-if( !isset($_GET['id']) ){
+if( !isset($_GET['idHakim']) ){
     header('Location: list-hakim.php');
 }
 
@@ -11,9 +11,9 @@ if( !isset($_GET['id']) ){
 $id = $_GET['id'];
 
 // buat query untuk ambil data dari database
-$sql = "SELECT * FROM calon_siswa WHERE id=$id";
+$sql = "SELECT * FROM hakim WHERE idHakim=$id";
 $query = mysqli_query($db, $sql);
-$siswa = mysqli_fetch_assoc($query);
+$hakim = mysqli_fetch_assoc($query);
 
 // jika data yang di-edit tidak ditemukan
 if( mysqli_num_rows($query) < 1 ){
@@ -38,25 +38,25 @@ if( mysqli_num_rows($query) < 1 ){
 
         <fieldset>
 
-            <input type="hidden" name="id" value="<?php echo $siswa['id'] ?>" />
+            <input type="hidden" name="id" value="<?php echo $hakim['id'] ?>" />
 
         <p>
             <label for="nama">Nama: </label>
-            <input type="text" name="nama" placeholder="nama lengkap" value="<?php echo $siswa['nama'] ?>" />
+            <input type="text" name="nama" placeholder="nama lengkap" value="<?php echo $hakim['nama'] ?>" />
         </p>
         <p>
             <label for="alamat">Alamat: </label>
-            <textarea name="alamat"><?php echo $siswa['alamat'] ?></textarea>
+            <textarea name="alamat"><?php echo $hakim['alamat'] ?></textarea>
         </p>
         <p>
             <label for="jenis_kelamin">Jenis Kelamin: </label>
-            <?php $jk = $siswa['jenis_kelamin']; ?>
+            <?php $jk = $hakim['jenis_kelamin']; ?>
             <label><input type="radio" name="jenis_kelamin" value="laki-laki" <?php echo ($jk == 'laki-laki') ? "checked": "" ?>> Laki-laki</label>
             <label><input type="radio" name="jenis_kelamin" value="perempuan" <?php echo ($jk == 'perempuan') ? "checked": "" ?>> Perempuan</label>
         </p>
         <p>
             <label for="agama">Agama: </label>
-            <?php $agama = $siswa['agama']; ?>
+            <?php $agama = $hakim['agama']; ?>
             <select name="agama">
                 <option <?php echo ($agama == 'Islam') ? "selected": "" ?>>Islam</option>
                 <option <?php echo ($agama == 'Kristen') ? "selected": "" ?>>Kristen</option>
@@ -67,7 +67,7 @@ if( mysqli_num_rows($query) < 1 ){
         </p>
         <p>
             <label for="sekolah_asal">Sekolah Asal: </label>
-            <input type="text" name="sekolah_asal" placeholder="nama sekolah" value="<?php echo $siswa['sekolah_asal'] ?>" />
+            <input type="text" name="sekolah_asal" placeholder="nama sekolah" value="<?php echo $hakim['sekolah_asal'] ?>" />
         </p>
         <p>
             <input type="submit" value="Simpan" name="simpan" />

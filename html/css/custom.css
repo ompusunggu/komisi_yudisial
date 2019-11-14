@@ -1,0 +1,99 @@
+#wrapper #content-wrapper{
+	padding-top: 50px;
+}
+
+.header-content{
+	margin-bottom: 30px;
+}
+
+#search-top{
+	max-width: 200px;
+	float: right;
+}
+
+.sidebar-dark .sidebar-brand {
+    color: #000;
+    height: auto;
+}
+
+.logo-ky-container{
+	max-width: 100%;
+}
+
+.logo-ky-container img{
+	width: 100%;
+}
+
+#accordionSidebar{
+	background-color: #fff;
+	background-image: none;
+}
+
+.sidebar .sidebar-brand .sidebar-brand-text{
+	text-align: center;
+    width: 100%;
+    text-transform: none;
+    margin-top: 20px;
+    display: block;
+}
+
+.sidebar-dark .nav-item.active .nav-link {
+    color: #fff;
+    background-color: #009E37;
+}
+
+.sidebar-dark .nav-item.active .nav-link i {
+    color: #fff;
+}
+
+.sidebar-dark .nav-item.active .nav-link {
+    color: #fff;
+}
+
+.sidebar-dark .nav-item .nav-link {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-dark .nav-item .nav-link i {
+    color: rgba(0, 0, 0, 0.3);
+}
+.btn-primary {
+    color: #fff;
+    background-color: #009E37;
+    border-color: #009E37;
+}
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #009E37;
+    border-color: #009E37;
+}
+#wrapper #content-wrapper {
+    padding-top: 50px;
+    padding-left: 224px;
+}
+#accordionSidebar {
+    background-color: #fff;
+    background-image: none;
+    position: fixed;
+}
+#wrapper #content-wrapper #content {
+    flex: 1 0 auto;
+    min-height: 100vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

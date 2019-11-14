@@ -46,8 +46,7 @@
             echo "<td>".$hakim['gelarHakim']."</td>";
 
             echo "<td>";
-            echo "<a href='form-edit.php?id=".$siswa['id']."'>Edit</a> | ";
-            echo "<a href='hapus.php?id=".$siswa['id']."'>Hapus</a>";
+            echo "<a href='detail-hakim.php?id=".$hakim['idHakim']."'>Edit</a> | ";
             echo "</td>";
 
             echo "</tr>";
