@@ -112,81 +112,11 @@
                       <th>Np</th>
                       <th>Name</th>
                       <th>NIP</th>
-                      <th>Badan Peradilan</th>
+                      <th>Gelar Hakim</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Putu Agya</td>
-                      <td>1906438720</td>
-                      <td>Pengadilan Bogor - 2A</td>
-                      <td><a href="#" class="btn btn-primary">View Profile</a></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Muhidin</td>
-                      <td>190641298</td>
-                      <td>Pengadilan Bogor - 2A</td>
-                      <td><a href="#" class="btn btn-primary">View Profile</a></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Arif Budiman</td>
-                      <td>1906432876</td>
-                      <td>Pengadilan Bogor - 2A</td>
-                      <td><a href="#" class="btn btn-primary">View Profile</a></td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Martin Alehanro</td>
-                      <td>190644410</td>
-                      <td>Pengadilan Bogor - 2A</td>
-                      <td><a href="#" class="btn btn-primary">View Profile</a></td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>Rasmunandar Rustam</td>
-                      <td>1906439942</td>
-                      <td>Pengadilan Bogor - 2A</td>
-                      <td><a href="#" class="btn btn-primary">View Profile</a></td>
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>Bisri Nursa</td>
-                      <td>1906438823</td>
-                      <td>Pengadilan Bogor - 2A</td>
-                      <td><a href="#" class="btn btn-primary">View Profile</a></td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>Aldo Wahyudi</td>
-                      <td>1906431183</td>
-                      <td>Pengadilan Bogor - 2A</td>
-                      <td><a href="#" class="btn btn-primary">View Profile</a></td>
-                    </tr>
-                    <tr>
-                      <td>8</td>
-                      <td>Fauzan Helmi</td>
-                      <td>1906439917</td>
-                      <td>Pengadilan Bogor - 2A</td>
-                      <td><a href="#" class="btn btn-primary">View Profile</a></td>
-                    </tr>
-                    <tr>
-                      <td>9</td>
-                      <td>Bisri Nursa</td>
-                      <td>190641281</td>
-                      <td>Pengadilan Bogor - 2A</td>
-                      <td><a href="#" class="btn btn-primary">View Profile</a></td>
-                    </tr>
-                    <tr>
-                      <td>10</td>
-                      <td>Michael Hansel</td>
-                      <td>190641298</td>
-                      <td>Pengadilan Bogor - 2A</td>
-                      <td><a href="#" class="btn btn-primary">View Profile</a></td>
-                    </tr>
                     <?php
                     $sql = "SELECT * FROM hakim";
                     $query = mysqli_query($db, $sql);
@@ -197,10 +127,10 @@
                         echo "<td>".$hakim['idHakim']."</td>";
                         echo "<td>".$hakim['namaHakim']."</td>";
                         echo "<td>".$hakim['nip']."</td>";
-                        echo "<td>".$hakim['npwp']."</td>";
+                        echo "<td>".$hakim['gelarHakim']."</td>";
 
                         echo "<td>";
-                        echo "<a href='detail-hakim.php?id=".$hakim['idHakim']."' class='btn btn-primary'>Edit</a>";
+                        echo "<a href='detail-hakim.php?id=".$hakim['idHakim']."' class='btn btn-primary'>View Detail</a>";
                         echo "</td>";
 
                         echo "</tr>";
