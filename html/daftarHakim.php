@@ -200,7 +200,7 @@
                         echo "<td>".$hakim['npwp']."</td>";
 
                         echo "<td>";
-                        echo "<a href='detail-hakim.php?id=".$hakim['idHakim']."'>Edit</a> | ";
+                        echo "<a href='detail-hakim.php?id=".$hakim['idHakim']."' class='btn btn-primary'>Edit</a>";
                         echo "</td>";
 
                         echo "</tr>";
