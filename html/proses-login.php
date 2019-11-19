@@ -28,12 +28,14 @@ if (isset($_POST['login'])) {
         echo $query;
         header('Location: index.php?status=sukses');
     } else {
+        echo "gagal";
         // kalau gagal alihkan ke halaman indek.php dengan status=gagal
         header('Location: index.php?status=gagal');
     }
 
 
 } else {
+    echo "gagal2";
     die("Akses dilarang...");
 }
 
