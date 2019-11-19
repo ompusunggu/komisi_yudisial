@@ -19,13 +19,13 @@ if (isset($_POST['login'])) {
     $sql = "SELECT * from user where username = '$username' and password =  '$hashedPassword'";
     echo $sql;
     $query = mysqli_query($db, $sql);
-    $num_results = mysqli_num_rows($result);
+    $num_results = mysqli_num_rows($query);
 
 
     // apakah query simpan berhasil?
     if($num_results == 1){
         $_SESSION[$username] = $hashedPassword;
-        $location = "Location: daftarHakim.php?data=$query";
+        $location = "Location: daftarHakim.php?data=$num_results";
         // kalau berhasil alihkan ke halaman index.php dengan status=sukses
         header($location);
     } else {
