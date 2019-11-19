@@ -1,7 +1,21 @@
+
+<script>
+  function myFunction() {
+    alert("Hello! I am an alert box!");
+  }
+</script>
+
 <?php
 
 include("config.php");
-include("login-check.php");
+include("clear-login.php");
+
+if(isset($_GET['status'])){
+  $status = $_GET['status'];
+  if($status == "gagal"){
+      echo '<script type="text/javascript">myFunction()</script>';
+  }
+}
 
 ?>
 <!DOCTYPE html>
