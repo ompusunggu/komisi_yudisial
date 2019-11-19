@@ -1,7 +1,7 @@
 <?php
 
 include("config.php");
-
+echo isset($_POST['login']);
 // cek apakah tombol daftar sudah diklik atau blum?
 if (isset($_POST['login'])) {
 
