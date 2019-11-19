@@ -11,8 +11,13 @@ if (isset($_POST['login'])) {
 
     $hashedPassword = hash("sha256", $password, false);
 
+    echo $username;
+    echo $password;
+    echo $hashedPassword;
+
     // buat query
     $sql = "SELECT * from user where username = '$username' and password =  '$hashedPassword'";
+    echo $sql;
     $query = mysqli_query($db, $sql);
     $_SESSION[$username] = $hashedPassword;
     echo $query;
