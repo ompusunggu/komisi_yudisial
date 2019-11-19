@@ -19,7 +19,8 @@ if (isset($_POST['login'])) {
     // apakah query simpan berhasil?
     if ($query) {
         // kalau berhasil alihkan ke halaman index.php dengan status=sukses
-        header('Location: index.php?status=sukses&username='+$username+'&password='+$hashedPassword);
+        echo $query;
+        header('Location: index.php?status=sukses');
     } else {
         // kalau gagal alihkan ke halaman indek.php dengan status=gagal
         header('Location: index.php?status=gagal');
