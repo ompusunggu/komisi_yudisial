@@ -40,10 +40,10 @@ include("login-check.php");
           <div class="title-login">Sistem Informasi<br>Monitoring Data Hakim</div>
           <div class="form-container">
             <div class="input-wrapper">
-              <input type="text" name="" placeholder="username" id="username">
+              <input type="text" name="username" placeholder="username" id="username">
             </div>
             <div class="input-wrapper">
-              <input type="password" name="" placeholder="password" id="password">
+              <input type="password" name="password" placeholder="password" id="password">
             </div>
           </div>
           <div class="container-submit-btn">
