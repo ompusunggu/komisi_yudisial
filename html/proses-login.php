@@ -15,6 +15,7 @@ if (isset($_POST['login'])) {
     $sql = "SELECT * from user where username = '$username' and password =  '$hashedPassword'";
     $query = mysqli_query($db, $sql);
     $_SESSION[$username] = $hashedPassword;
+    echo $query;
 
     // apakah query simpan berhasil?
     if ($query) {
