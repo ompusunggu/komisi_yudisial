@@ -1,7 +1,7 @@
 
 <script>
   function myFunction() {
-    alert("Hello! I am an alert box!");
+    alert("Login Gagal, Username atau Password salah");
   }
 </script>
 

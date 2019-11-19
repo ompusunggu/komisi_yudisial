@@ -23,8 +23,9 @@ if (isset($_POST['login'])) {
     // apakah query simpan berhasil?
     if ($query) {
         $_SESSION[$username] = $hashedPassword;
+        $location = "Location: daftarHakim.php?data='$query'";
         // kalau berhasil alihkan ke halaman index.php dengan status=sukses
-        header('Location: daftarHakim.php?data='.$query);
+        header($location);
     } else {
         echo "gagal";
         // kalau gagal alihkan ke halaman indek.php dengan status=gagal
