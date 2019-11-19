@@ -8,5 +8,7 @@
 
 session_start();
 
-print_r($_SESSION);
+if (!empty($_SESSION)) {
+    $_SESSION = [];
+}
 ?>
