@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include("config.php");
 echo isset($_POST['login']);
 // cek apakah tombol daftar sudah diklik atau blum?
