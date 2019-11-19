@@ -1,7 +1,11 @@
 
 <script>
-  function myFunction() {
+  function loginFailed() {
     alert("Login Gagal, Username atau Password salah");
+  }
+
+  function pleaseLogin(){
+    alert("Mohon Login terlebih dahulu");
   }
 </script>
 
@@ -12,9 +16,12 @@ include("clear-login.php");
 
 if(isset($_GET['status'])){
   $status = $_GET['status'];
-  if($status == "gagal"){
-      echo '<script type="text/javascript">myFunction()</script>';
-  }
+    if($status == "gagal"){
+        echo '<script type="text/javascript">loginFailed()</script>';
+    }
+    if($status == "login"){
+        echo '<script type="text/javascript">pleaseLogin()</script>';
+    }
 }
 
 ?>

@@ -24,7 +24,7 @@ if (isset($_POST['login'])) {
 
     // apakah query simpan berhasil?
     if($num_results == 1){
-        $_SESSION[$username] = $hashedPassword;
+        $_SESSION['username'] = $username;
         $location = "Location: daftarHakim.php";
         // kalau berhasil alihkan ke halaman index.php dengan status=sukses
         header($location);

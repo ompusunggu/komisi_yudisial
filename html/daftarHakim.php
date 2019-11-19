@@ -1,4 +1,8 @@
-<?php include("config.php"); ?>
+<?php include("config.php");
+  if(!isset($_SESSION['username'])){
+header("Location: index.php?status=login");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
