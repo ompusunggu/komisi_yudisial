@@ -34,7 +34,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="logo-ky-container">
           <img src="img/Logo_KY.jpg">
           <div class="sidebar-brand-text">SI MONITORING DATA HAKIM</div>
@@ -53,7 +53,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index-2.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Cari Hakim</span></a>
       </li>
@@ -183,7 +183,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="index.php">Logout</a>
         </div>
       </div>
     </div>

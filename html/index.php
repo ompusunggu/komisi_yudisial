@@ -1,3 +1,4 @@
+<?php include("config.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +29,7 @@
   <div id="wrapper">
 
     <!-- Content Wrapper -->
-
+    <form action="proses-login.php" method="POST">
         <div class="login-container">
           <div class="logo-ky"></div>
           <div class="title-login">Sistem Informasi<br>Monitoring Data Hakim</div>
@@ -41,9 +42,10 @@
             </div>
           </div>
           <div class="container-submit-btn">
-            <button>Submit</button>
+            <button value="Login" name="login">Submit</button>
           </div>
         </div>
+    </form>
 
 
   </div>
@@ -67,7 +69,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="index.php">Logout</a>
         </div>
       </div>
     </div>
