@@ -31,7 +31,7 @@ if (isset($_POST['login'])) {
     } else {
         echo "gagal";
         // kalau gagal alihkan ke halaman indek.php dengan status=gagal
-        header('Location: index.php?status=gagal');
+        header("Location: index.php?status=gagal&data='$num_results'");
     }
 
 
