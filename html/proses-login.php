@@ -20,12 +20,10 @@ if (isset($_POST['login'])) {
     echo $sql;
     $query = mysqli_query($db, $sql);
     $_SESSION[$username] = $hashedPassword;
-    echo $query;
 
     // apakah query simpan berhasil?
     if ($query) {
         // kalau berhasil alihkan ke halaman index.php dengan status=sukses
-        echo $query;
         header('Location: index.php?status=sukses');
     } else {
         echo "gagal";
