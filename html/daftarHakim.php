@@ -18,7 +18,7 @@ if ($_POST['pengadilan'] != '') {
         $whereClause = $whereClause . " where ";
 
     }
-    $namaBadanPeradilan = $_POST['namaBadanPeradilan'];
+    $namaBadanPeradilan = $_POST['pengadilan'];
     $whereClause = $whereClause . "namaBadanPeradilan = '$namaBadanPeradilan'";
 
 }
