@@ -2,9 +2,54 @@
 session_start();
 include("config.php");
 
-  if(!isset($_SESSION['username'])){
-header("Location: index.php?status=login");
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php?status=login");
+}
+$whereClause = '';
+if(isset($_POST['nama'])){
+  $namaHakim = $_POST['nama'];
+$whereClause = $whereClause."namaHakim = '$namaHakim'";
+}
+
+if(isset($_POST['pengadilan'])){
+  if($whereClause != ''){
+    $whereClause = $whereClause." and ";
   }
+    $namaBadanPeradilan = $_POST['namaBadanPeradilan'];
+    $whereClause = $whereClause."namaBadanPeradilan = '$namaBadanPeradilan'";
+
+}
+if(isset($_POST['provinsi'])){
+    if($whereClause != ''){
+        $whereClause = $whereClause." and ";
+    }
+    $provinsi = $_POST['provinsi'];
+    $whereClause = $whereClause."provinsi = '$provinsi'";
+
+}
+if(isset($_POST['jabatan'])){
+    if($whereClause != ''){
+        $whereClause = $whereClause." and ";
+    }
+    $jabatanHakim = $_POST['jabatan'];
+    $whereClause = $whereClause."jabatanHakim = '$jabatanHakim'";
+
+}
+
+
+$sql = "select h.namaHakim as namaHakim, bp.namaBadanPeradilan as namaBadanPeradilan, p2.namaProvinsi as provinsi, jh.jabatanHakim as jabatanHakim
+  from hakim h
+  inner join(
+    select * from pekerjaan pk1
+      inner join (
+        SELECT pk.idHakim hakimId, MIN(pk.idBadanPeradilan) badanPeradilan
+        FROM   pekerjaan pk GROUP BY hakimId
+      ) pInner on hakimId = pk1.idHakim and badanPeradilan = pk1.idBadanPeradilan
+    ) p on h.idHakim = p.idHakim
+  inner join badan_peradilan bp on p.idBadanPeradilan = bp.idBadanPeradilan
+  inner join provinsi p2 on bp.idProvinsi = p2.idProvinsi
+  inner join jabatan_hakim jh on p.idJabatanHakim = jh.idJabatanHakim ".$whereClause;
+$query = mysqli_query($db, $sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -113,7 +158,7 @@ header("Location: index.php?status=login");
           <div class="card shadow mb-4">
             <div class="card-body">
               <div class="table-responsive">
-                <form action="daftarHakim.php.php" method="POST">
+                <form action="daftarHakim.php" method="POST">
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                   <tr>
@@ -133,19 +178,6 @@ header("Location: index.php?status=login");
                   </thead>
                   <tbody>
                     <?php
-                    $sql = "select h.namaHakim as namaHakim, bp.namaBadanPeradilan as namaBadanPeradilan, p2.namaProvinsi as provinsi, jh.jabatanHakim as jabatanHakim
-  from hakim h
-  inner join(
-    select * from pekerjaan pk1
-      inner join (
-        SELECT pk.idHakim hakimId, MIN(pk.idBadanPeradilan) badanPeradilan
-        FROM   pekerjaan pk GROUP BY hakimId
-      ) pInner on hakimId = pk1.idHakim and badanPeradilan = pk1.idBadanPeradilan
-    ) p on h.idHakim = p.idHakim
-  inner join badan_peradilan bp on p.idBadanPeradilan = bp.idBadanPeradilan
-  inner join provinsi p2 on bp.idProvinsi = p2.idProvinsi
-  inner join jabatan_hakim jh on p.idJabatanHakim = jh.idJabatanHakim";
-                    $query = mysqli_query($db, $sql);
 
                     while($hakim = mysqli_fetch_array($query)){
                         echo "<tr>";
