@@ -8,12 +8,15 @@ if (!isset($_SESSION['username'])) {
 $whereClause = '';
 if(isset($_POST['nama'])){
   $namaHakim = $_POST['nama'];
-$whereClause = $whereClause."namaHakim = '$namaHakim'";
+$whereClause = $whereClause." where namaHakim = '$namaHakim'";
 }
 
 if(isset($_POST['pengadilan'])){
   if($whereClause != ''){
     $whereClause = $whereClause." and ";
+  }else {
+      $whereClause = $whereClause." where ";
+
   }
     $namaBadanPeradilan = $_POST['namaBadanPeradilan'];
     $whereClause = $whereClause."namaBadanPeradilan = '$namaBadanPeradilan'";
@@ -22,6 +25,9 @@ if(isset($_POST['pengadilan'])){
 if(isset($_POST['provinsi'])){
     if($whereClause != ''){
         $whereClause = $whereClause." and ";
+    }else {
+        $whereClause = $whereClause." where ";
+
     }
     $provinsi = $_POST['provinsi'];
     $whereClause = $whereClause."provinsi = '$provinsi'";
@@ -30,6 +36,9 @@ if(isset($_POST['provinsi'])){
 if(isset($_POST['jabatan'])){
     if($whereClause != ''){
         $whereClause = $whereClause." and ";
+    }else {
+        $whereClause = $whereClause." where ";
+
     }
     $jabatanHakim = $_POST['jabatan'];
     $whereClause = $whereClause."jabatanHakim = '$jabatanHakim'";
