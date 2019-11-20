@@ -6,12 +6,12 @@ if (!isset($_SESSION['username'])) {
     header("Location: index.php?status=login");
 }
 $whereClause = '';
-if (isset($_POST['nama'])) {
+if ($_POST['nama'] != '') {
     $namaHakim = $_POST['nama'];
     $whereClause = $whereClause . " where namaHakim = '$namaHakim'";
 }
 
-if (isset($_POST['pengadilan'])) {
+if ($_POST['pengadilan'] != '') {
     if ($whereClause != '') {
         $whereClause = $whereClause . " and ";
     } else {
@@ -22,7 +22,7 @@ if (isset($_POST['pengadilan'])) {
     $whereClause = $whereClause . "namaBadanPeradilan = '$namaBadanPeradilan'";
 
 }
-if (isset($_POST['provinsi'])) {
+if ($_POST['provinsi'] != '') {
     if ($whereClause != '') {
         $whereClause = $whereClause . " and ";
     } else {
@@ -33,7 +33,7 @@ if (isset($_POST['provinsi'])) {
     $whereClause = $whereClause . "provinsi = '$provinsi'";
 
 }
-if (isset($_POST['jabatan'])) {
+if ($_POST['jabatan'] != '') {
     if ($whereClause != '') {
         $whereClause = $whereClause . " and ";
     } else {
