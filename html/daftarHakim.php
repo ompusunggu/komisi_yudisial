@@ -30,7 +30,7 @@ if ($_POST['provinsi'] != '') {
 
     }
     $provinsi = $_POST['provinsi'];
-    $whereClause = $whereClause . "provinsi = '$provinsi'";
+    $whereClause = $whereClause . "namaProvinsi = '$provinsi'";
 
 }
 if ($_POST['jabatan'] != '') {
@@ -46,7 +46,7 @@ if ($_POST['jabatan'] != '') {
 }
 
 
-$sql = "select h.namaHakim as namaHakim, bp.namaBadanPeradilan as namaBadanPeradilan, p2.namaProvinsi as provinsi, jh.jabatanHakim as jabatanHakim
+$sql = "select h.namaHakim as namaHakim, bp.namaBadanPeradilan as namaBadanPeradilan, p2.namaProvinsi as namaProvinsi, jh.jabatanHakim as jabatanHakim
   from hakim h
   inner join(
     select * from pekerjaan pk1
@@ -198,7 +198,7 @@ $query = mysqli_query($db, $sql);
 
                       echo "<td>" . $hakim['namaHakim'] . "</td>";
                       echo "<td>" . $hakim['namaBadanPeradilan'] . "</td>";
-                      echo "<td>" . $hakim['provinsi'] . "</td>";
+                      echo "<td>" . $hakim['namaProvinsi'] . "</td>";
                       echo "<td>" . $hakim['jabatanHakim'] . "</td>";
 
                       echo "<td>";
