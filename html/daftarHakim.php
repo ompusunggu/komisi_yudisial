@@ -115,6 +115,13 @@ header("Location: index.php?status=login");
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
+                  <tr>
+                    <th><input type="text" name="username" placeholder="username" id="username"></th>
+                    <th><input type="text" name="username" placeholder="username" id="username"></th>
+                    <th><input type="text" name="username" placeholder="username" id="username"></th>
+                    <th><input type="text" name="username" placeholder="username" id="username"></th>
+                    <th><input type="text" name="username" placeholder="username" id="username"></th>
+                  </tr>
                     <tr>
                       <th>Np</th>
                       <th>Name</th>
@@ -122,26 +129,30 @@ header("Location: index.php?status=login");
                       <th>Gelar Hakim</th>
                       <th>Action</th>
                     </tr>
-                    <tr>
-                      <th><input type="text" name="username" placeholder="username" id="username"></th>
-                      <th><input type="text" name="username" placeholder="username" id="username"></th>
-                      <th><input type="text" name="username" placeholder="username" id="username"></th>
-                      <th><input type="text" name="username" placeholder="username" id="username"></th>
-                      <th><input type="text" name="username" placeholder="username" id="username"></th>
-                    </tr>
                   </thead>
                   <tbody>
                     <?php
-                    $sql = "SELECT * FROM hakim";
+                    $sql = "select h.namaHakim as namaHakim, bp.namaBadanPeradilan as namaBadanPeradilan, p2.namaProvinsi as provinsi, jh.jabatanHakim as jabatanHakim
+  from hakim h
+  inner join(
+    select * from pekerjaan pk1
+      inner join (
+        SELECT pk.idHakim hakimId, MIN(pk.idBadanPeradilan) badanPeradilan
+        FROM   pekerjaan pk GROUP BY hakimId
+      ) pInner on hakimId = pk1.idHakim and badanPeradilan = pk1.idBadanPeradilan
+    ) p on h.idHakim = p.idHakim
+  inner join badan_peradilan bp on p.idBadanPeradilan = bp.idBadanPeradilan
+  inner join provinsi p2 on bp.idProvinsi = p2.idProvinsi
+  inner join jabatan_hakim jh on p.idJabatanHakim = jh.idJabatanHakim";
                     $query = mysqli_query($db, $sql);
 
                     while($hakim = mysqli_fetch_array($query)){
                         echo "<tr>";
 
-                        echo "<td>".$hakim['idHakim']."</td>";
                         echo "<td>".$hakim['namaHakim']."</td>";
-                        echo "<td>".$hakim['nip']."</td>";
-                        echo "<td>".$hakim['gelarHakim']."</td>";
+                        echo "<td>".$hakim['namaBadanPeradilan']."</td>";
+                        echo "<td>".$hakim['provinsi']."</td>";
+                        echo "<td>".$hakim['jabatanHakim']."</td>";
 
                         echo "<td>";
                         echo "<a href='detail-hakim.php?id=".$hakim['idHakim']."' class='btn btn-primary'>View Detail</a>";
