@@ -113,14 +113,15 @@ header("Location: index.php?status=login");
           <div class="card shadow mb-4">
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <form action="daftarHakim.php.php" method="POST">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                   <tr>
-                    <th><input type="text" name="username" placeholder="username" id="username"></th>
-                    <th><input type="text" name="username" placeholder="username" id="username"></th>
-                    <th><input type="text" name="username" placeholder="username" id="username"></th>
-                    <th><input type="text" name="username" placeholder="username" id="username"></th>
-                    <th><input type="text" name="username" placeholder="username" id="username"></th>
+                    <th><input type="text" name="nama" placeholder="nama" id="nama"></th>
+                    <th><input type="text" name="pengadilan" placeholder="pengadilan" id="pengadilan"></th>
+                    <th><input type="text" name="provinsi" placeholder="provinsi" id="provinsi"></th>
+                    <th><input type="text" name="jabatan" placeholder="jabatan" id="jabatan"></th>
+                    <th><button value="Cari" name="cari">Cari</button></th>
                   </tr>
                     <tr>
                       <th>Nama Hakim</th>
@@ -164,6 +165,7 @@ header("Location: index.php?status=login");
 
                   </tbody>
                 </table>
+                </form>
               </div>
             </div>
           </div>
