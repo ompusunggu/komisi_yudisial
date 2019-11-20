@@ -122,6 +122,13 @@ header("Location: index.php?status=login");
                       <th>Gelar Hakim</th>
                       <th>Action</th>
                     </tr>
+                    <tr>
+                      <th><input type="text" name="username" placeholder="username" id="username"></th>
+                      <th><input type="text" name="username" placeholder="username" id="username"></th>
+                      <th><input type="text" name="username" placeholder="username" id="username"></th>
+                      <th><input type="text" name="username" placeholder="username" id="username"></th>
+                      <th><input type="text" name="username" placeholder="username" id="username"></th>
+                    </tr>
                   </thead>
                   <tbody>
                     <?php
