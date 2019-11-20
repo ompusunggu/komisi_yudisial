@@ -123,11 +123,11 @@ header("Location: index.php?status=login");
                     <th><input type="text" name="username" placeholder="username" id="username"></th>
                   </tr>
                     <tr>
-                      <th>Np</th>
-                      <th>Name</th>
-                      <th>NIP</th>
-                      <th>Gelar Hakim</th>
-                      <th>Action</th>
+                      <th>Nama Hakim</th>
+                      <th>Pengadilan</th>
+                      <th>Provinsi</th>
+                      <th>Jabatan</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
