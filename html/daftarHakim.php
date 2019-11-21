@@ -59,6 +59,8 @@ $sql = "select h.namaHakim as namaHakim, bp.namaBadanPeradilan as namaBadanPerad
   inner join provinsi p2 on bp.idProvinsi = p2.idProvinsi
   inner join jabatan_hakim jh on p.idJabatanHakim = jh.idJabatanHakim" . $whereClause;
 $query = mysqli_query($db, $sql);
+
+$queryProvince = mysqli_query($db, "select * from provinsi");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -175,6 +177,13 @@ $query = mysqli_query($db, $sql);
                     <th><input type="text" name="pengadilan" placeholder="pengadilan"
                                id="pengadilan"></th>
                     <th><input type="text" name="provinsi" placeholder="provinsi" id="provinsi">
+                      <select name="provinsi">
+                        <?php
+                        while ($prov = mysqli_fetch_array($queryProvince)) {
+                            echo "<option value='".$prov['idProvinsi']."'>'".$prov['namaProvinsi']."'</option>";
+                        }
+                        ?>
+                      </select>
                     </th>
                     <th><input type="text" name="jabatan" placeholder="jabatan" id="jabatan"></th>
                     <th>
