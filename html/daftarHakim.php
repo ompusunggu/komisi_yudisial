@@ -180,7 +180,7 @@ $queryProvince = mysqli_query($db, "select * from provinsi");
                       <select name="provinsi">
                         <?php
                         while ($prov = mysqli_fetch_array($queryProvince)) {
-                            echo "<option value='".$prov['idProvinsi']."'>'".$prov['namaProvinsi']."'</option>";
+                            echo "<option value=".$prov['namaProvinsi'].">".$prov['namaProvinsi']."</option>";
                         }
                         ?>
                       </select>
