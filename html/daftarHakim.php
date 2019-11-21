@@ -176,7 +176,7 @@ $queryProvince = mysqli_query($db, "select * from provinsi");
                     <th><input type="text" name="nama" placeholder="nama" id="nama"></th>
                     <th><input type="text" name="pengadilan" placeholder="pengadilan"
                                id="pengadilan"></th>
-                    <th><input type="text" name="provinsi" placeholder="provinsi" id="provinsi">
+                    <th>
                       <select name="provinsi">
                         <?php
                         while ($prov = mysqli_fetch_array($queryProvince)) {
