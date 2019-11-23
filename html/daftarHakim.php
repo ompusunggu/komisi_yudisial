@@ -182,7 +182,7 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
                         <?php
                             echo "<option value='' selected>Select</option>";
                         while ($hakim = mysqli_fetch_array($queryHakim)) {
-                            echo "<option value=".$hakim['namaHakim'].">".$hakim['namaHakim']."</option>";
+                            echo "<option value='".$hakim['namaHakim']."'>".$hakim['namaHakim']."</option>";
                         }
                         ?>
                       </select>
