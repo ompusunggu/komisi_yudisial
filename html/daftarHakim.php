@@ -192,7 +192,7 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
                           <?php
                               echo "<option value='' selected>Select</option>";
                           while ($badanPeradilan = mysqli_fetch_array($queryPengadilan)) {
-                              echo "<option value=".$badanPeradilan['namaBadanPeradilan'].">".$badanPeradilan['namaBadanPeradilan']."</option>";
+                              echo "<option value='".$badanPeradilan['namaBadanPeradilan']."'>".$badanPeradilan['namaBadanPeradilan']."</option>";
                           }
                           ?>
                       </select>
@@ -202,7 +202,7 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
                         <?php
                             echo "<option value='' selected>Select</option>";
                         while ($prov = mysqli_fetch_array($queryProvince)) {
-                            echo "<option value=".$prov['namaProvinsi'].">".$prov['namaProvinsi']."</option>";
+                            echo "<option value='".$prov['namaProvinsi']."'>".$prov['namaProvinsi']."</option>";
                         }
                         ?>
                       </select>
@@ -212,7 +212,7 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
                           <?php
                               echo "<option value='' selected>Select</option>";
                           while ($jabatanHakim = mysqli_fetch_array($queryJabatanHakim)) {
-                              echo "<option value=".$jabatanHakim['jabatanHakim'].">".$jabatanHakim['jabatanHakim']."</option>";
+                              echo "<option value='".$jabatanHakim['jabatanHakim']."'>".$jabatanHakim['jabatanHakim']."</option>";
                           }
                           ?>
                       </select>
