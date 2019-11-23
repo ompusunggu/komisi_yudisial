@@ -10,5 +10,5 @@ if($_GET['id'] != ''){
 
 $queryHakim = mysqli_query($db, "select * from hakim".$whereClause);
 $hakim = mysqli_fetch_array($queryHakim);
-echo $hakim;
+echo $hakim[0];
 ?>
