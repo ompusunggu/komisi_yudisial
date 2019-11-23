@@ -179,7 +179,7 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
                     <th>
                       <select name="nama">
                         <?php
-                            echo "<option value=''>Select</option>";
+                            echo "<option value='' selected>Select</option>";
                         while ($hakim = mysqli_fetch_array($queryHakim)) {
                             echo "<option value=".$hakim['namaHakim'].">".$hakim['namaHakim']."</option>";
                         }
@@ -189,7 +189,7 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
                     <th>
                       <select name="pengadilan">
                           <?php
-                              echo "<option value=''>Select</option>";
+                              echo "<option value='' selected>Select</option>";
                           while ($badanPeradilan = mysqli_fetch_array($queryPengadilan)) {
                               echo "<option value=".$badanPeradilan['namaBadanPeradilan'].">".$badanPeradilan['namaBadanPeradilan']."</option>";
                           }
@@ -199,7 +199,7 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
                     <th>
                       <select name="provinsi">
                         <?php
-                            echo "<option value=''>Select</option>";
+                            echo "<option value='' selected>Select</option>";
                         while ($prov = mysqli_fetch_array($queryProvince)) {
                             echo "<option value=".$prov['namaProvinsi'].">".$prov['namaProvinsi']."</option>";
                         }
@@ -209,7 +209,7 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
                     <th>
                       <select name="jabatan">
                           <?php
-                              echo "<option value=''>Select</option>";
+                              echo "<option value='' selected>Select</option>";
                           while ($jabatanHakim = mysqli_fetch_array($queryJabatanHakim)) {
                               echo "<option value=".$jabatanHakim['jabatanHakim'].">".$jabatanHakim['jabatanHakim']."</option>";
                           }
