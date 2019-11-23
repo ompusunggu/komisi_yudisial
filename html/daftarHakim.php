@@ -61,6 +61,9 @@ $sql = "select h.namaHakim as namaHakim, bp.namaBadanPeradilan as namaBadanPerad
 $query = mysqli_query($db, $sql);
 
 $queryProvince = mysqli_query($db, "select * from provinsi");
+$queryPengadilan = mysqli_query($db, "select namaBadanPeradilan from badan_peradilan");
+$queryHakim = mysqli_query($db, "select namaHakim from hakim");
+$queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -173,9 +176,24 @@ $queryProvince = mysqli_query($db, "select * from provinsi");
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                   <tr>
-                    <th><input type="text" name="nama" placeholder="nama" id="nama"></th>
-                    <th><input type="text" name="pengadilan" placeholder="pengadilan"
-                               id="pengadilan"></th>
+                    <th>
+                      <select name="nama">
+                        <?php
+                        while ($hakim = mysqli_fetch_array($queryHakim)) {
+                            echo "<option value=".$hakim['namaHakim'].">".$hakim['namaHakim']."</option>";
+                        }
+                        ?>
+                      </select>
+                    </th>
+                    <th>
+                      <select name="pengadilan">
+                          <?php
+                          while ($badanPeradilan = mysqli_fetch_array($queryPengadilan)) {
+                              echo "<option value=".$badanPeradilan['namaBadanPeradilan'].">".$badanPeradilan['namaBadanPeradilan']."</option>";
+                          }
+                          ?>
+                      </select>
+                    </th>
                     <th>
                       <select name="provinsi">
                         <?php
@@ -185,7 +203,15 @@ $queryProvince = mysqli_query($db, "select * from provinsi");
                         ?>
                       </select>
                     </th>
-                    <th><input type="text" name="jabatan" placeholder="jabatan" id="jabatan"></th>
+                    <th>
+                      <select name="jabatan">
+                          <?php
+                          while ($jabatanHakim = mysqli_fetch_array($queryJabatanHakim)) {
+                              echo "<option value=".$jabatanHakim['jabatanHakim'].">".$jabatanHakim['jabatanHakim']."</option>";
+                          }
+                          ?>
+                      </select>
+                    </th>
                     <th>
                       <button value="Cari" name="cari">Cari</button>
                     </th>
