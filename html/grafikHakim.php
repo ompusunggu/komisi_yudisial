@@ -27,6 +27,7 @@ while ($badanPeradilanCount = mysqli_fetch_array($queryGrafik)) {
 
     echo "<div>" . $badanPeradilanCount['namaBadanPeradilan'] . "-" . $badanPeradilanCount['jumlah'] . "</div>";
     $label[] = $badanPeradilanCount['namaBadanPeradilan'];
+    $data [] = $badanPeradilanCount['jumlah'];
     echo "</div>";
 }
 echo $label;
@@ -276,7 +277,7 @@ echo json_encode($label);
           backgroundColor: "#009E37",
           hoverBackgroundColor: "#009E37",
           borderColor: "#009E37",
-          data: [23, 60, 87, 65, 10, 34],
+          data: <?php echo json_encode($data)?> ,
         }],
       },
       options: {
