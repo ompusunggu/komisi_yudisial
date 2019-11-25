@@ -115,14 +115,14 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
 
     <!-- Nav Item - Tables -->
     <li class="nav-item active">
-      <a class="nav-link" href="tables.html">
+      <a class="nav-link" href="daftarHakim.php">
         <i class="fas fa-fw fa-table"></i>
         <span>List Hakim</span></a>
     </li>
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-      <a class="nav-link" href="index-2.html">
+      <a class="nav-link" href="daftarHakim.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Cari Hakim</span></a>
     </li>

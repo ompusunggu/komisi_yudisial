@@ -110,7 +110,7 @@ $maxByProvinsi = $maxByProvinsi * 2;
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="daftarHakim.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Cari Hakim</span></a>
     </li>
@@ -118,7 +118,7 @@ $maxByProvinsi = $maxByProvinsi * 2;
 
     <!-- Nav Item - Charts -->
     <li class="nav-item active">
-      <a class="nav-link" href="charts.html">
+      <a class="nav-link" href="grafikHakim.php">
         <i class="fas fa-fw fa-chart-area"></i>
         <span>Grafik Hakim</span></a>
     </li>
