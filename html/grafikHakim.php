@@ -4,7 +4,7 @@ session_start();
 include("config.php");
 $color= array('#4e73df', '#1cc88a', '#36b9cc', '#FF5733', '#BBFF33', '#934D95','#BF8001','#E20BE8','#9A179E','#6FCB6F','#A18D50','#3E2DC9','#2DC9BD','#89C11A');
 
-$sql = "select bp.namaBadanPeradilan as namaBadanPeradilan, count(bp.namaBadanPeradilan) as jumlah
+$sqlGrafikByPengadilan = "select bp.namaBadanPeradilan as namaBadanPeradilan, count(bp.namaBadanPeradilan) as jumlah
   from hakim h
   inner join(
     select * from pekerjaan pk1
@@ -17,7 +17,7 @@ $sql = "select bp.namaBadanPeradilan as namaBadanPeradilan, count(bp.namaBadanPe
   inner join provinsi p2 on bp.idProvinsi = p2.idProvinsi
   inner join jabatan_hakim jh on p.idJabatanHakim = jh.idJabatanHakim
 group by namaBadanPeradilan";
-$queryGrafik = mysqli_query($db, $sql);
+$queryGrafik = mysqli_query($db, $sqlGrafikByPengadilan);
 $index=0;
 $max = 0;
 while ($badanPeradilanCount = mysqli_fetch_array($queryGrafik)) {
@@ -40,6 +40,38 @@ echo json_encode($label);
 $max = $max *2;
 echo json_encode($max);
 echo json_encode($chartColor);
+
+$sqlGrafikByProvinsi = "select p2.namaProvinsi as namaProvinsi, count(p2.namaProvinsi) as jumlah
+  from hakim h
+  inner join(
+    select * from pekerjaan pk1
+      inner join (
+        SELECT pk.idHakim hakimId, MIN(pk.idBadanPeradilan) badanPeradilan
+        FROM   pekerjaan pk GROUP BY hakimId
+      ) pInner on hakimId = pk1.idHakim and badanPeradilan = pk1.idBadanPeradilan
+    ) p on h.idHakim = p.idHakim
+  inner join badan_peradilan bp on p.idBadanPeradilan = bp.idBadanPeradilan
+  inner join provinsi p2 on bp.idProvinsi = p2.idProvinsi
+  inner join jabatan_hakim jh on p.idJabatanHakim = jh.idJabatanHakim
+group by namaProvinsi";
+
+$queryGrafikByProvinsi = mysqli_query($db, $sqlGrafikByProvinsi);
+$indexProvinsi=0;
+$maxByProvinsi = 0;
+while ($provinsiCount = mysqli_fetch_array($queryGrafikByProvinsi)) {
+
+    $index = $index+1;
+
+    echo "<div>";
+
+    echo "<div>" . $provinsiCount['namaProvinsi'] . "-" . $provinsiCount['jumlah'] . "</div>";
+    $labelProvinsi[] = $provinsiCount['namaProvinsi'];
+    $dataProvinsi [] = $provinsiCount['jumlah'];
+    if($provinsiCount['jumlah'] > $maxByProvinsi){
+        $maxByProvinsi = $provinsiCount['jumlah'];
+    }
+    echo "</div>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -315,13 +347,13 @@ echo json_encode($chartColor);
     var myBarChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: <?php echo json_encode($label)?> ,
+        labels: <?php echo json_encode($labelProvinsi)?> ,
         datasets: [{
           label: "Jumlah",
           backgroundColor: "#009E37",
           hoverBackgroundColor: "#009E37",
           borderColor: "#009E37",
-          data: <?php echo json_encode($data)?> ,
+          data: <?php echo json_encode($dataProvinsi)?> ,
         }],
       },
       options: {
@@ -351,7 +383,7 @@ echo json_encode($chartColor);
           yAxes: [{
             ticks: {
               min: 0,
-              max: <?php echo json_encode($max)?> ,
+              max: <?php echo json_encode($maxByProvinsi)?> ,
               maxTicksLimit: 5,
               padding: 10,
               // Include a dollar sign in the ticks
