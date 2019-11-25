@@ -26,7 +26,7 @@ while ($badanPeradilanCount = mysqli_fetch_array($queryGrafik)) {
     echo "<div>";
 
     echo "<div>" . $badanPeradilanCount['namaBadanPeradilan'] . "-" . $badanPeradilanCount['jumlah'] . "</div>";
-    $label[$index] = $badanPeradilanCount['namaBadanPeradilan'];
+    $label[] = $badanPeradilanCount['namaBadanPeradilan'];
     echo "</div>";
 }
 echo $label;
