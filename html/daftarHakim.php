@@ -59,7 +59,6 @@ $sql = "select h.namaHakim as namaHakim, bp.namaBadanPeradilan as namaBadanPerad
   inner join provinsi p2 on bp.idProvinsi = p2.idProvinsi
   inner join jabatan_hakim jh on p.idJabatanHakim = jh.idJabatanHakim" . $whereClause;
 $query = mysqli_query($db, $sql);
-echo $sql;
 
 $queryProvince = mysqli_query($db, "select * from provinsi");
 $queryPengadilan = mysqli_query($db, "select namaBadanPeradilan from badan_peradilan");
