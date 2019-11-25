@@ -1,3 +1,34 @@
+<?php
+
+session_start();
+include("config.php");
+
+$sql = "select bp.namaBadanPeradilan as namaBadanPeradilan, count(bp.namaBadanPeradilan) as jumlah
+  from hakim h
+  inner join(
+    select * from pekerjaan pk1
+      inner join (
+        SELECT pk.idHakim hakimId, MIN(pk.idBadanPeradilan) badanPeradilan
+        FROM   pekerjaan pk GROUP BY hakimId
+      ) pInner on hakimId = pk1.idHakim and badanPeradilan = pk1.idBadanPeradilan
+    ) p on h.idHakim = p.idHakim
+  inner join badan_peradilan bp on p.idBadanPeradilan = bp.idBadanPeradilan
+  inner join provinsi p2 on bp.idProvinsi = p2.idProvinsi
+  inner join jabatan_hakim jh on p.idJabatanHakim = jh.idJabatanHakim
+group by namaBadanPeradilan";
+$queryGrafik = mysqli_query($db, $sql);
+
+while ($badanPeradilanCount = mysqli_fetch_array($queryGrafik)) {
+    echo "<tr>";
+
+    echo "<td>" . $badanPeradilanCount['namaBadanPeradilan'] . "</td>";
+    echo "<td>" . $badanPeradilanCount['jumlah'] . "</td>";
+
+    echo "</tr>";
+}
+
+?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 
