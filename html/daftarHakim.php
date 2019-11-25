@@ -130,7 +130,7 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-      <a class="nav-link" href="charts.html">
+      <a class="nav-link" href="grafikHakim.php">
         <i class="fas fa-fw fa-chart-area"></i>
         <span>Grafik Hakim</span></a>
     </li>
