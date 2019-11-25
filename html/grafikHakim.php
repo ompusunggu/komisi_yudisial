@@ -2,6 +2,7 @@
 
 session_start();
 include("config.php");
+$color= array('#4e73df', '#1cc88a', '#36b9cc', '#FF5733', '#BBFF33', '#934D95','#BF8001','#E20BE8','#9A179E','#6FCB6F','#A18D50','#3E2DC9','#2DC9BD','#89C11A');
 
 $sql = "select bp.namaBadanPeradilan as namaBadanPeradilan, count(bp.namaBadanPeradilan) as jumlah
   from hakim h
@@ -28,6 +29,7 @@ while ($badanPeradilanCount = mysqli_fetch_array($queryGrafik)) {
     echo "<div>" . $badanPeradilanCount['namaBadanPeradilan'] . "-" . $badanPeradilanCount['jumlah'] . "</div>";
     $label[] = $badanPeradilanCount['namaBadanPeradilan'];
     $data [] = $badanPeradilanCount['jumlah'];
+    $chartColor [] = $color[$index];
     if($badanPeradilanCount['jumlah'] > $max){
       $max = $badanPeradilanCount['jumlah'];
     }
@@ -37,6 +39,7 @@ echo $label;
 echo json_encode($label);
 $max = $max *2;
 echo json_encode($max);
+echo json_encode($chartColor);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -240,7 +243,43 @@ echo json_encode($max);
   <script src="vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="js/demo/chart-pie-demo.js"></script>
+  <script>
+    // Set new default font family and font color to mimic Bootstrap's default styling
+    Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    Chart.defaults.global.defaultFontColor = '#858796';
+
+    // Pie Chart Example
+    var ctx = document.getElementById("myPieChart");
+    var myPieChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: <?php echo json_encode($label)?>,
+        datasets: [{
+          data: <?php echo json_encode($data)?> ,
+          backgroundColor: <?php echo json_encode($chartColor)?> ,
+          hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+          hoverBorderColor: "rgba(234, 236, 244, 1)",
+        }],
+      },
+      options: {
+        maintainAspectRatio: false,
+        tooltips: {
+          backgroundColor: "rgb(255,255,255)",
+          bodyFontColor: "#858796",
+          borderColor: '#dddfeb',
+          borderWidth: 1,
+          xPadding: 15,
+          yPadding: 15,
+          displayColors: false,
+          caretPadding: 10,
+        },
+        legend: {
+          display: false
+        },
+        cutoutPercentage: 80,
+      },
+    });
+  </script>
   <script>
     // Set new default font family and font color to mimic Bootstrap's default styling
     Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
