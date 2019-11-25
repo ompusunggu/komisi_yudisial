@@ -18,7 +18,7 @@ $sql = "select bp.namaBadanPeradilan as namaBadanPeradilan, count(bp.namaBadanPe
 group by namaBadanPeradilan";
 $queryGrafik = mysqli_query($db, $sql);
 $index=0;
-
+$max = 0;
 while ($badanPeradilanCount = mysqli_fetch_array($queryGrafik)) {
 
   $index = $index+1;
@@ -28,10 +28,15 @@ while ($badanPeradilanCount = mysqli_fetch_array($queryGrafik)) {
     echo "<div>" . $badanPeradilanCount['namaBadanPeradilan'] . "-" . $badanPeradilanCount['jumlah'] . "</div>";
     $label[] = $badanPeradilanCount['namaBadanPeradilan'];
     $data [] = $badanPeradilanCount['jumlah'];
+    if($badanPeradilanCount['jumlah'] > $max){
+      $max = $badanPeradilanCount['jumlah'];
+    }
     echo "</div>";
 }
 echo $label;
 echo json_encode($label);
+$max = $max *2;
+echo json_encode($max);
 ?>
 <!DOCTYPE html>
 <html lang="en">
