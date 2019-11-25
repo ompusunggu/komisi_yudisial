@@ -29,7 +29,8 @@ while ($badanPeradilanCount = mysqli_fetch_array($queryGrafik)) {
     $label[$index] = $badanPeradilanCount['namaBadanPeradilan'];
     echo "</div>";
 }
-
+echo $label;
+echo json_encode($label);
 ?>
 <!DOCTYPE html>
 <html lang="en">
