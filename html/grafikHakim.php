@@ -19,15 +19,14 @@ group by namaBadanPeradilan";
 $queryGrafik = mysqli_query($db, $sql);
 
 while ($badanPeradilanCount = mysqli_fetch_array($queryGrafik)) {
-    echo "<tr>";
+    echo "<div>";
 
-    echo "<td>" . $badanPeradilanCount['namaBadanPeradilan'] . "</td>";
-    echo "<td>" . $badanPeradilanCount['jumlah'] . "</td>";
+    echo "<div>" . $badanPeradilanCount['namaBadanPeradilan'] . "</div>";
+    echo "<div>" . $badanPeradilanCount['jumlah'] . "</div>";
 
-    echo "</tr>";
+    echo "</div>";
 }
 
-?>
 ?>
 <!DOCTYPE html>
 <html lang="en">
