@@ -312,7 +312,7 @@ echo json_encode($max);
           yAxes: [{
             ticks: {
               min: 0,
-              max: 100,
+              max: <?php echo json_encode($max)?> ,
               maxTicksLimit: 5,
               padding: 10,
               // Include a dollar sign in the ticks
