@@ -5,12 +5,13 @@ include("config.php");
 if (!isset($_SESSION['username'])) {
     header("Location: index.php?status=login");
 }
-
+$idHakim = "";
 if($_GET['id'] != ''){
     $whereClause = $whereClause . " where h.idHakim = ".$_GET['id'];
+    $idHakim = $_GET['id'];
 }
 
-$sql = "select h.idHakim as idHakim, h.nip as nip, h.namaHakim as namaHakim,
+$sql = "select h.idHakim as idHakim, h.nip as nip, h.namaHakim as namaHakim, h.npwp,
 h.tglLahir, jk.jenisKelamin, a.namaAgama, sp.statusPerkawinan,
 bp.namaBadanPeradilan as namaBadanPeradilan,
 p2.namaProvinsi as namaProvinsi, jh.jabatanHakim as jabatanHakim
@@ -30,9 +31,29 @@ p2.namaProvinsi as namaProvinsi, jh.jabatanHakim as jabatanHakim
 	inner join status_perkawinan sp on h.idStatusPerkawinan = sp.idStatusPerkawinan" . $whereClause;
 
 $queryHakim = mysqli_query($db, $sql);
-$rowCount = mysqli_num_rows($queryHakim);
-echo $rowCount;
 
+$sqlPendidikan  = "select p.namaSekolah, p.tahunLulus, pf.namaPendidikanFormal from pendidikan p
+	inner join pendidikan_formal pf on p.idPendidikanFormal = pf.idPendidikanFormal
+where p.idHakim = ".$idHakim;
+
+$queryPendidikan = mysqli_query($db, $sqlPendidikan);
+
+$sqlPekerjaan = "select p.TMT, bp.namaBadanPeradilan, jh.jabatanHakim from pekerjaan p
+	inner join badan_peradilan bp on p.idBadanPeradilan = bp.idBadanPeradilan
+	inner join jabatan_hakim jh on p.idJabatanHakim = jh.idJabatanHakim 
+where p.idHakim = ".$idHakim;
+
+$queryPekerjaan = mysqli_query($db, $sqlPekerjaan);
+
+$sqlHubunganKeluarga = "select ak.namaAnggotaKeluarga, ak.pekerjaan, ak.alamat, a.namaAgama, jk.jenisKelamin, hk.hubunganKeluarga, ak.tglLahir,
+from anggota_keluarga ak
+	inner join hubungan_keluarga hk on ak.idHubKeluarga = hk.idHubKeluarga
+	inner join jenis_kelamin jk on ak.idJenisKelamin = jk.idJenisKelamin
+	inner join agama a on ak.idAgama = a.idAgama
+where ak.idHakim = ".$idHakim;
+
+
+$queryHubunganKeluarga = mysqli_query($db, $sqlHubunganKeluarga);
 
 ?>
 
@@ -145,8 +166,8 @@ echo $rowCount;
                       echo "<div class='isi-atribut'>".$hakim['nip']."</div>";
                     echo "</div>";
                     echo "<div>";
-                      echo "<div class='nama-atribut'>NIK</div>";
-                      echo "<div class='isi-atribut'>".$hakim['nik']."</div>";
+                      echo "<div class='nama-atribut'>NPWP</div>";
+                      echo "<div class='isi-atribut'>".$hakim['npwp']."</div>";
                     echo "</div>";
                     echo "<div>";
                       echo "<div class='nama-atribut'>TTL</div>";
@@ -164,7 +185,7 @@ echo $rowCount;
                     echo "</div>";
                     echo "<div>";
                       echo "<div class='nama-atribut'>Status</div>";
-                      echo "<div class='isi-atribut'>".$hakim['tglLahir']."</div>";
+                      echo "<div class='isi-atribut'>".$hakim['statusPerkawinan']."</div>";
                     echo "</div>";
                   echo "</div>";
                 echo "</div>";
@@ -176,41 +197,27 @@ echo $rowCount;
                 <div class="data-pendidikan">
                   <h2>Data Pendidikan</h2>
                   <table class="table">
+
                     <tr>
                       <th>No</th>
                       <th>Jenjang</th>
                       <th>Institusi</th>
-                      <th>Tahun Masuk</th>
                       <th>Tahun Lulus</th>
                     </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>SD</td>
-                      <td>Regina Pacis</td>
-                      <td>2003</td>
-                      <td>2009</td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>SD</td>
-                      <td>Regina Pacis</td>
-                      <td>2003</td>
-                      <td>2009</td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>SD</td>
-                      <td>Regina Pacis</td>
-                      <td>2003</td>
-                      <td>2009</td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>SD</td>
-                      <td>Regina Pacis</td>
-                      <td>2003</td>
-                      <td>2009</td>
-                    </tr>
+                    <?php
+                    $indexPendidikan = 1;
+                    while ($pendidikanHakim = mysqli_fetch_array($queryPendidikan)) {
+                        echo "<tr>";
+
+                        echo "<td>" . $indexPendidikan ."</td>";
+                        echo "<td>" . $pendidikanHakim['namaPendidikanFormal'] . "</td>";
+                        echo "<td>" . $pendidikanHakim['namaSekolah'] . "</td>";
+                        echo "<td>" . $pendidikanHakim['tahunLulus'] . "</td>";
+
+                        echo "</tr>";
+                        $indexPendidikan = $indexPendidikan + 1;
+                    }
+                    ?>
                   </table>
                 </div>
                 <div class="data-pekerjaan">
@@ -222,30 +229,21 @@ echo $rowCount;
                       <th>Pengadilan</th>
                       <th>Tahun Masuk</th>
                     </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>SD</td>
-                      <td>Regina Pacis</td>
-                      <td>2003</td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>SD</td>
-                      <td>Regina Pacis</td>
-                      <td>2003</td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>SD</td>
-                      <td>Regina Pacis</td>
-                      <td>2003</td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>SD</td>
-                      <td>Regina Pacis</td>
-                      <td>2003</td>
-                    </tr>
+                      <?php
+                      $queryHubunganKeluarga;
+                      $indexPekerjaan = 1;
+                      while ($pekerjaanHakim = mysqli_fetch_array($queryPekerjaan)) {
+                          echo "<tr>";
+
+                          echo "<td>" . $indexPekerjaan ."</td>";
+                          echo "<td>" . $pekerjaanHakim['jabatanHakim'] . "</td>";
+                          echo "<td>" . $pekerjaanHakim['namaBadanPeradilan'] . "</td>";
+                          echo "<td>" . $pekerjaanHakim['TMT'] . "</td>";
+
+                          echo "</tr>";
+                          $indexPekerjaan = $indexPekerjaan + 1;
+                      }
+                      ?>
                   </table>
                 </div>
                 <div class="data-anggota-keluarga">
@@ -257,41 +255,28 @@ echo $rowCount;
                       <th>Hubungan</th>
                       <th>Jenis Kelamin</th>
                       <th>Agama</th>
-                      <th>Pendidikan</th>
+                      <th>Tanggal Lahir</th>
                       <th>Pekerjaan</th>
                       <th>Alamat</th>
+                    </tr>
+                      <?php
+                      $indexHubunganKeluarga = 1;
+                      while ($hubunganKeluarga = mysqli_fetch_array($queryHubunganKeluarga)) {
+                          echo "<tr>";
 
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>Kadek Adyatma</td>
-                      <td>Adik Kandung</td>
-                      <td>Laki-laki</td>
-                      <td>Hindu</td>
-                      <td>SMA</td>
-                      <td>Mahasiswa</td>
-                      <td>Jalan Farmasi 3, Bogor.</td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>Kadek Adyatma</td>
-                      <td>Adik Kandung</td>
-                      <td>Laki-laki</td>
-                      <td>Hindu</td>
-                      <td>SMA</td>
-                      <td>Mahasiswa</td>
-                      <td>Jalan Farmasi 3, Bogor.</td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>Kadek Adyatma</td>
-                      <td>Adik Kandung</td>
-                      <td>Laki-laki</td>
-                      <td>Hindu</td>
-                      <td>SMA</td>
-                      <td>Mahasiswa</td>
-                      <td>Jalan Farmasi 3, Bogor.</td>
-                    </tr>
+                          echo "<td>" . $indexHubunganKeluarga ."</td>";
+                          echo "<td>" . $hubunganKeluarga['namaAnggotaKeluarga'] . "</td>";
+                          echo "<td>" . $hubunganKeluarga['hubunganKeluarga'] . "</td>";
+                          echo "<td>" . $hubunganKeluarga['jenisKelamin'] . "</td>";
+                          echo "<td>" . $hubunganKeluarga['namaAgama'] . "</td>";
+                          echo "<td>" . $hubunganKeluarga['tglLahir'] . "</td>";
+                          echo "<td>" . $hubunganKeluarga['pekerjaan'] . "</td>";
+                          echo "<td>" . $hubunganKeluarga['alamat'] . "</td>";
+
+                          echo "</tr>";
+                          $indexHubunganKeluarga = $indexHubunganKeluarga + 1;
+                      }
+                      ?>
                   </table>
               </div>
 
