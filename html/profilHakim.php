@@ -7,7 +7,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 if($_GET['id'] != ''){
-    $whereClause = $whereClause . " where idHakim = ".$_GET['id'];
+    $whereClause = $whereClause . " where h.idHakim = ".$_GET['id'];
 }
 
 $sql = "select h.idHakim as idHakim, h.nip as nip, h.namaHakim as namaHakim,
