@@ -46,7 +46,7 @@ if ($_POST['jabatan'] != '') {
 }
 
 
-$sql = "select h.nip as nip, h.namaHakim as namaHakim, bp.namaBadanPeradilan as namaBadanPeradilan, 
+$sql = "select h.idHakim as idHakim, h.nip as nip, h.namaHakim as namaHakim, bp.namaBadanPeradilan as namaBadanPeradilan, 
 p2.namaProvinsi as namaProvinsi, jh.jabatanHakim as jabatanHakim
   from hakim h
   inner join(
@@ -250,7 +250,7 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
                       echo "<td>" . $hakim['jabatanHakim'] . "</td>";
 
                       echo "<td>";
-                      echo "<a href='detail-hakim.php?id=" . $hakim['idHakim'] . "' class='btn btn-primary'>View Detail</a>";
+                      echo "<a href='profilHakim.php?id=" . $hakim['idHakim'] . "' class='btn btn-primary'>View Detail</a>";
                       echo "</td>";
 
                       echo "</tr>";
