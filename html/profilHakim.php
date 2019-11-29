@@ -45,7 +45,7 @@ where p.idHakim = ".$idHakim;
 
 $queryPekerjaan = mysqli_query($db, $sqlPekerjaan);
 
-$sqlHubunganKeluarga = "select ak.namaAnggotaKeluarga, ak.pekerjaan, ak.alamat, a.namaAgama, jk.jenisKelamin, hk.hubunganKeluarga, ak.tglLahir,
+$sqlHubunganKeluarga = "select ak.namaAnggotaKeluarga, ak.pekerjaan, ak.alamat, a.namaAgama, jk.jenisKelamin, hk.hubunganKeluarga, ak.tglLahir
 from anggota_keluarga ak
 	inner join hubungan_keluarga hk on ak.idHubKeluarga = hk.idHubKeluarga
 	inner join jenis_kelamin jk on ak.idJenisKelamin = jk.idJenisKelamin
