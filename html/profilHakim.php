@@ -5,10 +5,6 @@ include("config.php");
 if (!isset($_SESSION['username'])) {
     header("Location: index.php?status=login");
 }
-$idHakim = "";
-if (!isset($_GET['id'])){
-    header("Location: daftarHakim.php?status=404");
-}
 
 if($_GET['id'] != ''){
     $whereClause = $whereClause . " where idHakim = ".$_GET['id'];
@@ -35,8 +31,6 @@ p2.namaProvinsi as namaProvinsi, jh.jabatanHakim as jabatanHakim
 
 $queryHakim = mysqli_query($db, $sql);
 $rowCount = mysqli_num_rows($queryHakim);
-
-
 
 if($rowCount != 1){
     header("Location: daftarHakim.php?status=404");
