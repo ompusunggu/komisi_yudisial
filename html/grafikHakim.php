@@ -5,7 +5,7 @@ include("config.php");
 if (!isset($_SESSION['username'])) {
     header("Location: index.php?status=login");
 }
-$color = array('#4e73df', '#1cc88a', '#36b9cc', '#FF5733', '#BBFF33', '#934D95', '#BF8001', '#E20BE8', '#9A179E', '#6FCB6F', '#A18D50', '#3E2DC9', '#2DC9BD', '#89C11A');
+$color = array('#7a9397', '#79a7a5', '#75b69e', '#6dc49c', '#70d462', '#6b878c', '#6a9d9b', '#66ae93', '#5dbe91', '#60cf51', '#5d7b81', '#5c9492', '#57a689', '#4db886', '#51cb40');
 
 $sqlGrafikByPengadilan = "select bp.namaBadanPeradilan as namaBadanPeradilan, count(bp.namaBadanPeradilan) as jumlah
   from hakim h
