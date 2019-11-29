@@ -183,7 +183,7 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
 
 
         <!-- DataTales Example -->
-        <div class="card shadow mb-4">
+        <div class="card mb-4">
           <div class="card-body">
             <div class="table-responsive">
               <form action="daftarHakim.php" method="POST">

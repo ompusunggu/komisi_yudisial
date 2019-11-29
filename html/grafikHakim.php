@@ -163,7 +163,7 @@ $maxByProvinsi = $maxByProvinsi * 2;
           <div class="col-xl-8 col-lg-7">
 
             <!-- Bar Chart -->
-            <div class="card shadow mb-4">
+            <div class="card mb-4">
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Grafik Provinsi</h6>
               </div>
@@ -179,7 +179,7 @@ $maxByProvinsi = $maxByProvinsi * 2;
 
           <!-- Donut Chart -->
           <div class="col-xl-4 col-lg-5">
-            <div class="card shadow mb-4">
+            <div class="card mb-4">
               <!-- Card Header - Dropdown -->
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Grafik Tingkat Pengadilan</h6>
@@ -295,7 +295,7 @@ $maxByProvinsi = $maxByProvinsi * 2;
       legend: {
         display: false
       },
-      cutoutPercentage: 80,
+      cutoutPercentage: 0,
     },
   });
 </script>
