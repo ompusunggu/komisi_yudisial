@@ -31,7 +31,7 @@ p2.namaProvinsi as namaProvinsi, jh.jabatanHakim as jabatanHakim
 
 $queryHakim = mysqli_query($db, $sql);
 $rowCount = mysqli_num_rows($queryHakim);
-
+echo $rowCount;
 if($rowCount != 1){
     header("Location: daftarHakim.php?status=404");
 }
