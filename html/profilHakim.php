@@ -41,7 +41,7 @@ $queryPendidikan = mysqli_query($db, $sqlPendidikan);
 $sqlPekerjaan = "select p.TMT, bp.namaBadanPeradilan, jh.jabatanHakim from pekerjaan p
 	inner join badan_peradilan bp on p.idBadanPeradilan = bp.idBadanPeradilan
 	inner join jabatan_hakim jh on p.idJabatanHakim = jh.idJabatanHakim 
-where p.idHakim = ".$idHakim;
+where p.idHakim = ".$idHakim." order by p.terhitungMulaiTanggal desc";
 
 $queryPekerjaan = mysqli_query($db, $sqlPekerjaan);
 
