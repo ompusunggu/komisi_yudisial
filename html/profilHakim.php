@@ -1,3 +1,50 @@
+<?php
+session_start();
+include("config.php");
+
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php?status=login");
+}
+$idHakim = "";
+if (!isset($_GET['id'])){
+    header("Location: daftarHakim.php?status=404");
+}
+
+if($_GET['id'] != ''){
+    $whereClause = $whereClause . " where idHakim = ".$_GET['id'];
+}
+
+$sql = "select h.idHakim as idHakim, h.nip as nip, h.namaHakim as namaHakim,
+h.tglLahir, jk.jenisKelamin, a.namaAgama, sp.statusPerkawinan,
+bp.namaBadanPeradilan as namaBadanPeradilan,
+p2.namaProvinsi as namaProvinsi, jh.jabatanHakim as jabatanHakim
+  from hakim h
+  inner join(
+    select * from pekerjaan pk1
+      inner join (
+        SELECT pk.idHakim hakimId, MIN(pk.idBadanPeradilan) badanPeradilan
+        FROM   pekerjaan pk GROUP BY hakimId
+      ) pInner on hakimId = pk1.idHakim and badanPeradilan = pk1.idBadanPeradilan
+    ) p on h.idHakim = p.idHakim
+  inner join badan_peradilan bp on p.idBadanPeradilan = bp.idBadanPeradilan
+  inner join provinsi p2 on bp.idProvinsi = p2.idProvinsi
+  inner join jabatan_hakim jh on p.idJabatanHakim = jh.idJabatanHakim
+	inner join jenis_kelamin jk on h.idJenisKelamin = jk.idJenisKelamin
+	inner join agama a on h.idAgama = a.idAgama
+	inner join status_perkawinan sp on h.idStatusPerkawinan = sp.idStatusPerkawinan" . $whereClause;
+
+$queryHakim = mysqli_query($db, $sql);
+$rowCount = mysqli_num_rows($queryHakim);
+
+
+
+if($rowCount != 1){
+    header("Location: daftarHakim.php?status=404");
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,38 +141,47 @@
             <div class="card-body">
               <div class="foto-hakim" style="background-image: url(https://www.pa-jakartaselatan.go.id/simpeg/foto/pegawai/C0619630308%20198903%201%20004.jpg);"></div>
               <div class="container-biodata">
-                <div class="nama-hakim">Putu Agya Paramartha</div>
-                <div class="jabatan-hakim">Hakim Agung</div>
-                <div class="container-biodata-detail">
-                  <div class="biodata-left">
-                    <div>
-                      <div class="nama-atribut">NIP</div>
-                      <div class="isi-atribut">1906438720</div>
-                    </div>
-                    <div>
-                      <div class="nama-atribut">NIK</div>
-                      <div class="isi-atribut">21218999-12184928</div>
-                    </div>
-                    <div>
-                      <div class="nama-atribut">TTL</div>
-                      <div class="isi-atribut">Bogor, 30 November 1993</div>
-                    </div>
-                  </div>
-                  <div class="biodata-right">
-                    <div>
-                      <div class="nama-atribut">Jenis Kelamin</div>
-                      <div class="isi-atribut">Laki-laki</div>
-                    </div>
-                    <div>
-                      <div class="nama-atribut">Agama</div>
-                      <div class="isi-atribut">Hindu</div>
-                    </div>
-                    <div>
-                      <div class="nama-atribut">Status</div>
-                      <div class="isi-atribut">Belum Menikah</div>
-                    </div>
-                  </div>
-                </div>
+                <?php
+                while ($hakim = mysqli_fetch_array($queryHakim)) {
+
+                    echo "<div class='nama-hakim'>" .$hakim['namaHakim']. "</div>";
+                    echo "<div class='jabatan-hakim'>" .$hakim['jabatanHakim']. "</div>";
+
+                    echo "<div class='container-biodata-detail'>";
+                  echo "<div class='biodata-left'>";
+                    echo "<div>";
+                      echo "<div class='nama-atribut'>NIP</div>";
+                      echo "<div class='isi-atribut'>".$hakim['nip']."</div>";
+                    echo "</div>";
+                    echo "<div>";
+                      echo "<div class='nama-atribut'>NIK</div>";
+                      echo "<div class='isi-atribut'>".$hakim['nik']."</div>";
+                    echo "</div>";
+                    echo "<div>";
+                      echo "<div class='nama-atribut'>TTL</div>";
+                      echo "<div class='isi-atribut'>".$hakim['tglLahir']."</div>";
+                    echo "</div>";
+                  echo "</div>";
+                  echo "<div class='biodata-right'>";
+                    echo "<div>";
+                      echo "<div class='nama-atribut'>Jenis Kelamin</div>";
+                      echo "<div class='isi-atribut'>".$hakim['jenisKelamin']."</div>";
+                    echo "</div>";
+                    echo "<div>";
+                      echo "<div class='nama-atribut'>Agama</div>";
+                      echo "<div class='isi-atribut'>".$hakim['namaAgama']."</div>";
+                    echo "</div>";
+                    echo "<div>";
+                      echo "<div class='nama-atribut'>Status</div>";
+                      echo "<div class='isi-atribut'>".$hakim['tglLahir']."</div>";
+                    echo "</div>";
+                  echo "</div>";
+                echo "</div>";
+                  }
+                ?>
+
+
+
                 <div class="data-pendidikan">
                   <h2>Data Pendidikan</h2>
                   <table class="table">

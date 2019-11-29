@@ -1,7 +1,10 @@
 <?php
-
 session_start();
 include("config.php");
+
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php?status=login");
+}
 $color = array('#4e73df', '#1cc88a', '#36b9cc', '#FF5733', '#BBFF33', '#934D95', '#BF8001', '#E20BE8', '#9A179E', '#6FCB6F', '#A18D50', '#3E2DC9', '#2DC9BD', '#89C11A');
 
 $sqlGrafikByPengadilan = "select bp.namaBadanPeradilan as namaBadanPeradilan, count(bp.namaBadanPeradilan) as jumlah

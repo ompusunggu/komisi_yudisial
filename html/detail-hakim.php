@@ -9,16 +9,8 @@ if($_GET['id'] != ''){
 
 $queryHakim = mysqli_query($db, "select * from hakim".$whereClause);
 
-while ($hakim = mysqli_fetch_array($queryHakim)) {
-    echo "<tr>";
+$rowCount = mysqli_num_rows($queryHakim);
 
-    echo "<td>" . $hakim['idHakim'] . "</td>";
-    echo "<td>" . $hakim['namaHakim'] . "</td>";
-    echo "<td>" . $hakim['nip'] . "</td>";
-    echo "<td>" . $hakim['gelarHakim'] . "</td>";
-    echo "<td>" . $hakim['tempatLahir'] . "</td>";
 
-    echo "</tr>";
-}
 
 ?>

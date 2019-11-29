@@ -1,3 +1,9 @@
+<script>
+  function notFound(){
+    alert("Detail hakim yang anda cari tidak ditemukan");
+  }
+</script>
+
 <?php
 session_start();
 include("config.php");
@@ -5,6 +11,13 @@ include("config.php");
 if (!isset($_SESSION['username'])) {
     header("Location: index.php?status=login");
 }
+
+$status = $_GET['status'];
+if($status == "404"){
+    echo '<script type="text/javascript">notFound()</script>';
+}
+
+
 $whereClause = '';
 if ($_POST['nama'] != '') {
     $namaHakim = $_POST['nama'];
