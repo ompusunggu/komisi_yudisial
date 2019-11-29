@@ -46,7 +46,8 @@ if ($_POST['jabatan'] != '') {
 }
 
 
-$sql = "select h.namaHakim as namaHakim, bp.namaBadanPeradilan as namaBadanPeradilan, p2.namaProvinsi as namaProvinsi, jh.jabatanHakim as jabatanHakim
+$sql = "select h.nip as nip, h.namaHakim as namaHakim, bp.namaBadanPeradilan as namaBadanPeradilan, 
+p2.namaProvinsi as namaProvinsi, jh.jabatanHakim as jabatanHakim
   from hakim h
   inner join(
     select * from pekerjaan pk1
@@ -177,6 +178,13 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
                   <thead>
                   <tr>
                     <th>
+                      <select name="nip">
+                          <?php
+                          echo "<option value='' selected>Select</option>";
+                          ?>
+                      </select>
+                    </th>
+                    <th>
                       <select name="nama">
                         <?php
                             echo "<option value='' selected>Select</option>";
@@ -221,6 +229,7 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
                     </th>
                   </tr>
                   <tr>
+                    <th>NIP</th>
                     <th>Nama Hakim</th>
                     <th>Pengadilan</th>
                     <th>Provinsi</th>
@@ -234,6 +243,7 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
                   while ($hakim = mysqli_fetch_array($query)) {
                       echo "<tr>";
 
+                      echo "<td>" . $hakim['nip'] . "</td>";
                       echo "<td>" . $hakim['namaHakim'] . "</td>";
                       echo "<td>" . $hakim['namaBadanPeradilan'] . "</td>";
                       echo "<td>" . $hakim['namaProvinsi'] . "</td>";
