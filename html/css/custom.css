@@ -1,14 +1,14 @@
-#wrapper #content-wrapper{
-	padding-top: 50px;
+#wrapper #content-wrapper {
+    padding-top: 50px;
 }
 
-.header-content{
-	margin-bottom: 30px;
+.header-content {
+    margin-bottom: 30px;
 }
 
-#search-top{
-	max-width: 200px;
-	float: right;
+#search-top {
+    max-width: 200px;
+    float: right;
 }
 
 .sidebar-dark .sidebar-brand {
@@ -16,21 +16,22 @@
     height: auto;
 }
 
-.logo-ky-container{
-	max-width: 100%;
+.logo-ky-container {
+    max-width: 100%;
+    padding-top: 25px;
 }
 
-.logo-ky-container img{
-	width: 100%;
+.logo-ky-container img {
+    width: 90%;
 }
 
-#accordionSidebar{
-	background-color: #fff;
-	background-image: none;
+#accordionSidebar {
+    background-color: #fff;
+    background-image: none;
 }
 
-.sidebar .sidebar-brand .sidebar-brand-text{
-	text-align: center;
+.sidebar .sidebar-brand .sidebar-brand-text {
+    text-align: center;
     width: 100%;
     text-transform: none;
     margin-top: 20px;
@@ -57,43 +58,124 @@
 .sidebar-dark .nav-item .nav-link i {
     color: rgba(0, 0, 0, 0.3);
 }
+
 .btn-primary {
     color: #fff;
     background-color: #009E37;
     border-color: #009E37;
 }
+
 .page-item.active .page-link {
     z-index: 1;
     color: #fff;
     background-color: #009E37;
     border-color: #009E37;
 }
+
 #wrapper #content-wrapper {
     padding-top: 50px;
-    padding-left: 224px;
+    padding-left: 224px;    /* padding-bottom: 50px; */
 }
+
 #accordionSidebar {
     background-color: #fff;
     background-image: none;
     position: fixed;
+    border: 1px solid #e3e6f0;
 }
+
 #wrapper #content-wrapper #content {
     flex: 1 0 auto;
     min-height: 100vh;
 }
 
+.text-primary {
+    color: #000000 !important;
+}
 
+/* PROFIL DATA HAKIM */
+.foto-hakim {
+    width: 150px;
+    height: 210px;
+    background-color: red;
+    border-radius: 3px;
+    float: left;
+    display: inline-block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;    /* border: 1px solid #000000; */
+    margin-left: 15px;
+    margin-top: 15px;
+}
 
+.container-biodata {
+    display: inline-block;
+    float: left;
+    width: calc(100% - 195px);
+    padding-left: 40px;
+    padding-top: 30px;
+}
 
+.nama-hakim {
+    color: #000;
+    font-weight: 700;
+    font-size: 24px;
+}
 
+.biodata-hakim {
+}
 
+.container-biodata-detail {
+    margin-top: 30px;
+}
 
+.biodata-left {
+    display: inline-block;
+    float: left;
+    padding-right: 25px;
+}
 
+.biodata-right {
+}
 
+.nama-atribut {
+    width: 120px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
 
+.biodata-left .nama-atribut {
+    width: 65px;
+}
 
+.isi-atribut {
+    max-width: 211px;
+    display: inline-block;
+    color: #000;
+    margin-bottom: 5px;
+}
 
+.data-pendidikan {
+    padding-top: 30px;
+}
 
+.data-pekerjaan {
+    padding-top: 20px;
+}
 
+.data-anggota-keluarga {
+    padding-top: 20px;
+    margin-bottom: 30px;
+}
 
+.data-pendidikan h2, .data-pekerjaan h2, .data-anggota-keluarga h2 {
+    color: #009E37;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
 
+.sidebar-dark .nav-item .nav-link:active, .sidebar-dark .nav-item .nav-link:focus, .sidebar-dark .nav-item .nav-link:hover {
+    color: #fff;
+    background-color: #058130;
+}
