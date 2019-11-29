@@ -116,10 +116,10 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
       <div class="logo-ky-container">
         <img src="img/Logo_KY.jpg">
-        <div class="sidebar-brand-text">SI MONITORING DATA HAKIM</div>
+        <div class="sidebar-brand-text">SI Monitoring Data Hakim</div>
       </div>
     </a>
 
@@ -147,7 +147,6 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
         <i class="fas fa-fw fa-chart-area"></i>
         <span>Grafik Hakim</span></a>
     </li>
-
 
   </ul>
   <!-- End of Sidebar -->

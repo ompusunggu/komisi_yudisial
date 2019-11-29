@@ -104,14 +104,14 @@ $queryHubunganKeluarga = mysqli_query($db, $sqlHubunganKeluarga);
 
       <!-- Nav Item - Tables -->
       <li class="nav-item active">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="daftarHakim.php">
           <i class="fas fa-fw fa-table"></i>
           <span>List Hakim</span></a>
       </li>
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="daftarHakim.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Cari Hakim</span></a>
       </li>
@@ -119,7 +119,7 @@ $queryHubunganKeluarga = mysqli_query($db, $sqlHubunganKeluarga);
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="grafikHakim.php">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Grafik Hakim</span></a>
       </li>
