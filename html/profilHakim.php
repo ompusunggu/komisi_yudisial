@@ -13,7 +13,7 @@ if($_GET['id'] != ''){
 
 $sql = "select h.idHakim as idHakim, h.nip as nip, h.namaHakim as namaHakim, h.npwp,
 h.tglLahir, jk.jenisKelamin, a.namaAgama, sp.statusPerkawinan,
-bp.namaBadanPeradilan as namaBadanPeradilan,
+bp.namaBadanPeradilan as namaBadanPeradilan, f.file,
 p2.namaProvinsi as namaProvinsi, jh.jabatanHakim as jabatanHakim
   from hakim h
   inner join(
@@ -28,7 +28,8 @@ p2.namaProvinsi as namaProvinsi, jh.jabatanHakim as jabatanHakim
   inner join jabatan_hakim jh on p.idJabatanHakim = jh.idJabatanHakim
 	inner join jenis_kelamin jk on h.idJenisKelamin = jk.idJenisKelamin
 	inner join agama a on h.idAgama = a.idAgama
-	inner join status_perkawinan sp on h.idStatusPerkawinan = sp.idStatusPerkawinan" . $whereClause;
+	inner join status_perkawinan sp on h.idStatusPerkawinan = sp.idStatusPerkawinan
+	inner join foto f on h.idHakim = f.idHakim" . $whereClause;
 
 $queryHakim = mysqli_query($db, $sql);
 
@@ -151,10 +152,10 @@ $queryHubunganKeluarga = mysqli_query($db, $sqlHubunganKeluarga);
                    <!-- DataTales Example -->
           <div class="card">
             <div class="card-body">
-              <div class="foto-hakim" style="background-image: url(https://www.pa-jakartaselatan.go.id/simpeg/foto/pegawai/C0619630308%20198903%201%20004.jpg);"></div>
-              <div class="container-biodata">
                 <?php
                 while ($hakim = mysqli_fetch_array($queryHakim)) {
+                    echo "<div class='foto-hakim' style='background-image: url(".$hakim['file'].");'></div>";
+                    echo "<div class='container-biodata'>";
 
                     echo "<div class='nama-hakim'>" .$hakim['namaHakim']. "</div>";
                     echo "<div class='jabatan-hakim'>" .$hakim['jabatanHakim']. "</div>";
