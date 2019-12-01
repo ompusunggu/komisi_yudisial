@@ -126,6 +126,13 @@ $maxByProvinsi = $maxByProvinsi * 2;
         <span>Grafik Hakim</span></a>
     </li>
 
+    <!-- LOGOUT -->
+    <li class="nav-item">
+      <a class="nav-link" href="index.php?status=logout">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>LOGOUT</span></a>
+    </li>
+
   </ul>
   <!-- End of Sidebar -->
 

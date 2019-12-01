@@ -7,6 +7,10 @@
   function pleaseLogin(){
     alert("Mohon Login terlebih dahulu");
   }
+
+  function loggedOut(){
+    alert("Berhasil Logout, Terima kasih");
+  }
 </script>
 
 <?php
@@ -21,6 +25,9 @@ if(isset($_GET['status'])){
     }
     if($status == "login"){
         echo '<script type="text/javascript">pleaseLogin()</script>';
+    }
+    if($status == "logout"){
+        echo '<script type="text/javascript">loggedOut()</script>';
     }
 }
 
