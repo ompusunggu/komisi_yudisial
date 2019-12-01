@@ -112,7 +112,7 @@ $queryHubunganKeluarga = mysqli_query($db, $sqlHubunganKeluarga);
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="daftarHakim.php">
+        <a class="nav-link" href="cariDataHakim.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Cari Hakim</span></a>
       </li>
