@@ -9,8 +9,8 @@ if (!isset($_SESSION['username'])) {
 <?php
 $whereClause = "";
 if ($_POST['filter'] === "nama") {
-    $namaHakim = $_POST['keyword'];
-    $whereClause = $whereClause . " where namaHakim ilike '%$namaHakim%'";
+    $namaHakim = strtolower( $_POST['keyword']);
+    $whereClause = $whereClause . " where lower(namaHakim) like '%$namaHakim%'";
 }
 
 if ($_POST['filter'] === "nip") {
