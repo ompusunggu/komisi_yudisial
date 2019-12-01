@@ -5,11 +5,12 @@ include("config.php");
 
 <?php
 $whereClause = "";
-if ($_POST['nama'] != '') {
+if ($_POST['filter'] === "nama") {
     $namaHakim = $_POST['keyword'];
     $whereClause = $whereClause . " where namaHakim = '$namaHakim'";
 }
-if ($_POST['nip'] != '') {
+
+if ($_POST['filter'] === "nip") {
     $nip = $_POST['keyword'];
     $whereClause = $whereClause . " where nip = '$nip'";
 }
@@ -139,7 +140,7 @@ $query = mysqli_query($db, $sql);
               <div class="search-custom-container">
                 <div class="berdasarkan-nip">
                   <span>Cari berdasarkan</span>
-                  <select>
+                  <select name = "filter">
                     <option value = "nip">NIP</option>
                     <option value = "nama">Nama Hakim</option>
                   </select>
