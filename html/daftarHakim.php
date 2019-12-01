@@ -92,7 +92,7 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Daftar Hakim</title>
+  <title>Sistem Informasi Monitoring Data Hakim - Daftar Hakim</title>
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

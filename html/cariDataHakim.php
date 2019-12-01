@@ -46,7 +46,7 @@ $rowCount = mysqli_num_rows($query);
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Daftar Hakim</title>
+  <title>Sistem Informasi Monitoring Data Hakim - Cari Data Hakim</title>
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

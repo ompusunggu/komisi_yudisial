@@ -68,7 +68,7 @@ $maxByProvinsi = $maxByProvinsi * 2;
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Daftar Hakim</title>
+  <title>Sistem Informasi Monitoring Data Hakim - Grafik Hakim</title>
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
