@@ -176,8 +176,8 @@ $query = mysqli_query($db, $sql);
                       echo "<tr>";
 
                       echo "<td>" . $indexHakim . "</td>";
-                      echo "<td>" . $hakim['nip'] . "</td>";
                       echo "<td>" . $hakim['namaHakim'] . "</td>";
+                      echo "<td>" . $hakim['nip'] . "</td>";
                       echo "<td>" . $hakim['namaBadanPeradilan'] . "</td>";
 
                       echo "<td>";
