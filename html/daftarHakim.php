@@ -1,3 +1,8 @@
+<?php
+session_start();
+include("config.php");
+?>
+
 <script>
   function notFound(){
     alert("Detail hakim yang anda cari tidak ditemukan");
@@ -5,9 +10,6 @@
 </script>
 
 <?php
-session_start();
-include("config.php");
-
 if (!isset($_SESSION['username'])) {
     header("Location: index.php?status=login");
 }
@@ -237,7 +239,7 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
                       </select>
                     </th>
                     <th>
-                      <button value="Cari" name="cari">Cari</button>
+                      <button value="Cari" name="cari" class="btn btn-primary">Cari</button>
                     </th>
                   </tr>
                   <tr>

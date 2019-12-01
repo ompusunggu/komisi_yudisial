@@ -1,3 +1,34 @@
+<?php
+session_start();
+include("config.php");
+?>
+
+<?php
+if ($_POST['nama'] != '') {
+    $namaHakim = $_POST['keyword'];
+    $whereClause = $whereClause . " where namaHakim = '$namaHakim'";
+}
+if ($_POST['nip'] != '') {
+    $nip = $_POST['keyword'];
+    $whereClause = $whereClause . " where nip = '$nip'";
+}
+
+$sql = "select h.idHakim as idHakim, h.nip as nip, h.namaHakim as namaHakim, bp.namaBadanPeradilan as namaBadanPeradilan, 
+p2.namaProvinsi as namaProvinsi, jh.jabatanHakim as jabatanHakim
+  from hakim h
+  inner join(
+    select * from pekerjaan pk1
+      inner join (
+        SELECT pk.idHakim hakimId, MIN(pk.idBadanPeradilan) badanPeradilan
+        FROM   pekerjaan pk GROUP BY hakimId
+      ) pInner on hakimId = pk1.idHakim and badanPeradilan = pk1.idBadanPeradilan
+    ) p on h.idHakim = p.idHakim
+  inner join badan_peradilan bp on p.idBadanPeradilan = bp.idBadanPeradilan
+  inner join provinsi p2 on bp.idProvinsi = p2.idProvinsi
+  inner join jabatan_hakim jh on p.idJabatanHakim = jh.idJabatanHakim" . $whereClause;
+
+$query = mysqli_query($db, $sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -103,21 +134,23 @@
           <!-- DataTales Example -->
           <div class="card">
             <div class="card-body">
+              <form action="cariDataHakim.php.php" method="POST">
               <div class="search-custom-container">
                 <div class="berdasarkan-nip">
                   <span>Cari berdasarkan</span>
                   <select>
-                    <option>NIP</option>
-                    <option>Nama Hakim</option>
+                    <option value = "nip">NIP</option>
+                    <option value = "nama">Nama Hakim</option>
                   </select>
                 </div>
                 <div class="keyword">
                   <span>Keyboard</span>
-                  <input type="text" name="Nama Hakim" placeholder="Nama Hakim">
+                  <input type="text" name="keyword" placeholder="Nama Hakim">
                 </div>
                 <div class="search-btn-container">
-                  <a href="#" class="btn btn-primary">Cari Data Hakim</a>
+                  <button class="btn btn-primary">Cari Data Hakim</button>
                 </div>
+                </form>
 
               </div>
             </div>
@@ -137,13 +170,24 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Putu Agya</td>
-                      <td>1906438720</td>
-                      <td>Pengadilan Bogor - 2A</td>
-                      <td><a href="#" class="btn btn-primary">View Profile</a></td>
-                    </tr>
+                  <?php
+                  $indexHakim = 1;
+                  while ($hakim = mysqli_fetch_array($query)) {
+                      echo "<tr>";
+
+                      echo "<td>" . $indexHakim . "</td>";
+                      echo "<td>" . $hakim['nip'] . "</td>";
+                      echo "<td>" . $hakim['namaHakim'] . "</td>";
+                      echo "<td>" . $hakim['namaBadanPeradilan'] . "</td>";
+
+                      echo "<td>";
+                      echo "<a href='profilHakim.php?id=" . $hakim['idHakim'] . "' class='btn btn-primary'>View Detail</a>";
+                      echo "</td>";
+
+                      echo "</tr>";
+                      $indexHakim = $indexHakim + 1;
+                  }
+                  ?>
                     <tr>
                       <td>2</td>
                       <td>Muhidin</td>
