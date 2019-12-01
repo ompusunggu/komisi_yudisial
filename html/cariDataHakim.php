@@ -29,6 +29,8 @@ p2.namaProvinsi as namaProvinsi, jh.jabatanHakim as jabatanHakim
   inner join provinsi p2 on bp.idProvinsi = p2.idProvinsi
   inner join jabatan_hakim jh on p.idJabatanHakim = jh.idJabatanHakim" . $whereClause;
 $query = mysqli_query($db, $sql);
+
+$rowCount = mysqli_num_rows($query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -158,7 +160,7 @@ $query = mysqli_query($db, $sql);
           </div>
           <div class="card hasil-pencarian">
             <div class="card-body">
-              <span class="title-hasil-pencarian">5 hasil pencarian ditemukan:</span>
+              <span class="title-hasil-pencarian"><?php echo $rowCount;?> hasil pencarian ditemukan:</span>
               <div class="table-responsive">
                 <table class="table table-bordered" width="100%" cellspacing="0">
                   <thead>
