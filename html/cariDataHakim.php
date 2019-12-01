@@ -26,7 +26,7 @@ p2.namaProvinsi as namaProvinsi, jh.jabatanHakim as jabatanHakim
   inner join badan_peradilan bp on p.idBadanPeradilan = bp.idBadanPeradilan
   inner join provinsi p2 on bp.idProvinsi = p2.idProvinsi
   inner join jabatan_hakim jh on p.idJabatanHakim = jh.idJabatanHakim" . $whereClause;
-
+echo $sql;
 $query = mysqli_query($db, $sql);
 ?>
 <!DOCTYPE html>
