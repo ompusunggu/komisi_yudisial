@@ -194,11 +194,12 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
                     <th>
                       <select name="nip">
                           <?php
-                          echo "<option value='' selected>Select</option>";
+                          echo "<option value='' selected>---</option>";
                           ?>
                       </select>
                     </th>
                     <th>
+                      <div class="berdasarkan-nip">
                       <select name="nama">
                         <?php
                             echo "<option value='' selected>Select</option>";
@@ -207,8 +208,10 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
                         }
                         ?>
                       </select>
+                      </div>
                     </th>
                     <th>
+                      <div class="berdasarkan-nip">
                       <select name="pengadilan">
                           <?php
                               echo "<option value='' selected>Select</option>";
@@ -217,8 +220,10 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
                           }
                           ?>
                       </select>
+                      </div>
                     </th>
                     <th>
+                      <div class="berdasarkan-nip">
                       <select name="provinsi">
                         <?php
                             echo "<option value='' selected>Select</option>";
@@ -227,8 +232,10 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
                         }
                         ?>
                       </select>
+                      </div>
                     </th>
                     <th>
+                      <div class="berdasarkan-nip">
                       <select name="jabatan">
                           <?php
                               echo "<option value='' selected>Select</option>";
@@ -237,6 +244,7 @@ $queryJabatanHakim = mysqli_query($db, "select jabatanHakim from jabatan_hakim")
                           }
                           ?>
                       </select>
+                      </div>
                     </th>
                     <th>
                       <button value="Cari" name="cari" class="btn btn-primary">Cari</button>
