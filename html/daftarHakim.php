@@ -1,6 +1,9 @@
 <?php
 session_start();
 include("config.php");
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php?status=login");
+}
 ?>
 
 <script>
@@ -10,9 +13,6 @@ include("config.php");
 </script>
 
 <?php
-if (!isset($_SESSION['username'])) {
-    header("Location: index.php?status=login");
-}
 
 $status = $_GET['status'];
 if($status == "404"){
