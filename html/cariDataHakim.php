@@ -134,7 +134,7 @@ $query = mysqli_query($db, $sql);
           <!-- DataTales Example -->
           <div class="card">
             <div class="card-body">
-              <form action="cariDataHakim.php.php" method="POST">
+              <form action="cariDataHakim.php" method="POST">
               <div class="search-custom-container">
                 <div class="berdasarkan-nip">
                   <span>Cari berdasarkan</span>
