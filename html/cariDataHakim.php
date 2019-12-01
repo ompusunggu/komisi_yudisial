@@ -10,7 +10,7 @@ if (!isset($_SESSION['username'])) {
 $whereClause = "";
 if ($_POST['filter'] === "nama") {
     $namaHakim = $_POST['keyword'];
-    $whereClause = $whereClause . " where namaHakim = '$namaHakim'";
+    $whereClause = $whereClause . " where namaHakim ilike '%$namaHakim%'";
 }
 
 if ($_POST['filter'] === "nip") {
@@ -156,7 +156,7 @@ $rowCount = mysqli_num_rows($query);
                   </select>
                 </div>
                 <div class="keyword">
-                  <span>Keyboard</span>
+                  <span>Keyword</span>
                   <input type="text" name="keyword" placeholder="Nama Hakim">
                 </div>
                 <div class="search-btn-container">
