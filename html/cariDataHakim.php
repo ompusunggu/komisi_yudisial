@@ -4,6 +4,7 @@ include("config.php");
 ?>
 
 <?php
+$whereClause = "";
 if ($_POST['nama'] != '') {
     $namaHakim = $_POST['keyword'];
     $whereClause = $whereClause . " where namaHakim = '$namaHakim'";
