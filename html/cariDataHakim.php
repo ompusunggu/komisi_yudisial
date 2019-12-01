@@ -78,14 +78,14 @@ $rowCount = mysqli_num_rows($query);
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="daftarHakim.php">
           <i class="fas fa-fw fa-table"></i>
           <span>List Hakim</span></a>
       </li>
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="cariDataHakim.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Cari Hakim</span></a>

@@ -105,7 +105,7 @@ $maxByProvinsi = $maxByProvinsi * 2;
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item active">
+    <li class="nav-item">
       <a class="nav-link" href="daftarHakim.php">
         <i class="fas fa-fw fa-table"></i>
         <span>List Hakim</span></a>
@@ -120,7 +120,7 @@ $maxByProvinsi = $maxByProvinsi * 2;
 
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
+    <li class="nav-item active">
       <a class="nav-link" href="grafikHakim.php">
         <i class="fas fa-fw fa-chart-area"></i>
         <span>Grafik Hakim</span></a>
