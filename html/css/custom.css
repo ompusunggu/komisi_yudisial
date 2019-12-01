@@ -179,3 +179,56 @@
     color: #fff;
     background-color: #058130;
 }
+
+/* CARI DATA HAKIM */
+.search-custom-container {
+}
+
+.berdasarkan-nip {
+    display: inline-block;
+}
+
+.berdasarkan-nip span {
+    margin-right: 5px;
+}
+
+.berdasarkan-nip select {
+    -webkit-appearance: none;
+    box-shadow: none;
+    outline: none;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #d5d5d5;
+}
+
+.keyword {
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.keyword span {
+    margin-right: 5px;
+}
+
+.keyword input {
+    -webkit-appearance: none;
+    outline: none;
+    background: #fff;
+    box-shadow: none;
+    border: 1px #dddddd solid;
+    padding: 5px;
+    border-radius: 5px;
+    width: 350px;
+}
+
+.search-btn-container {
+    display: inline-block;
+    margin-left: 25px;
+}
+.hasil-pencarian{
+    margin-top: 15px;
+}
+.title-hasil-pencarian{margin-bottom: 15px;display: block;}
+.hide{
+    display: none !important
+}
